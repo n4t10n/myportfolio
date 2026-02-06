@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX/UI Designer Portfolio | Valentin Demarco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-light: #fcfaf8;
+            --bg-gradient: linear-gradient(135deg, #fcfaf8 0%, #f2f5f8 100%);
+            --accent-cold: #2d4059;    
+            --accent-warm: #e59866;    
+            --text-main: #1a1a1a;
+            --text-light: #555555;
+            --white: #ffffff;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            background-image: var(--bg-gradient);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- Navegación --- */
+        nav {
+            padding: 1.5rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            background: rgba(252, 250, 248, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--accent-cold); text-decoration: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); margin-left: 2rem; font-size: 0.85rem; font-weight: 500; }
+
+        /* --- Hero --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 8%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(229, 152, 102, 0.08) 0%, rgba(252, 250, 248, 0) 70%);
+            z-index: -1;
+        }
+
+        .hero span { color: var(--accent-warm); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 1rem; display: block; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; max-width: 900px; }
+
+        /* --- Sobre Mí --- */
+        .about {
+            padding: 8rem 8%;
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .profile-container { position: relative; width: 100%; max-width: 400px; }
+        .profile-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 15px solid var(--bg-light);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .profile-container::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent-warm);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .about-text h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .about-text p { color: var(--text-light); font-size: 1.1rem; margin-bottom: 1.5rem; }
+
+        /* --- Proyectos (Grid Corregido) --- */
+        .work { padding: 8rem 8%; }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 3rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            width: 100%;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .project-card:active { transform: scale(0.98); }
+
+        .project-thumb {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background-color: var(--accent-cold);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .project-card:hover .project-thumb img { transform: scale(1.05); }
+
+        .slot-nuevo {
+            border: 2px dashed #ddd;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 16 / 10;
+            color: #999;
+            transition: var(--transition);
+        }
+
+        .slot-nuevo:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
+
+        /* --- Footer --- */
+        footer { 
+            padding: 6rem 8%; 
+            background: var(--accent-cold); 
+            color: white; 
+            text-align: center;
+            background-image: linear-gradient(rgba(45, 64, 89, 0.95), rgba(45, 64, 89, 0.95)), url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+        }
+
+        /* Animaciones */
+        .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .about { grid-template-columns: 1fr; text-align: center; }
+            .profile-container { margin: 0 auto; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+
+    .education { padding: 8rem 8%; background: var(--white); }
+        
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+        }
+
+        .cert-card {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-color: var(--accent-warm);
+        }
+
+        .cert-icon {
+            font-size: 1.5rem;
+            margin-right: 1.2rem;
+            background: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .cert-info h3 { font-size: 1rem; margin-bottom: 0.2rem; }
+        .cert-info p { font-size: 0.85rem; color: var(--text-light); }
+        .cert-info span { 
+            font-size: 0.75rem; 
+            color: var(--accent-warm); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">VALENTIN DEMARCO</a>
+        <div class="nav-links">
+            <a href="#proyectos">Proyectos</a>
+            <a href="#formacion">Formación</a> <a href="#sobre-mi">Sobre mí</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="reveal">
+            <span>UX/UI Designer & Co-founder</span>
+            <h1>Diseños y soluciones centradas en los usuarios, impulsando la creatividad profesional.</h1>
+        </div>
+    </section>
+
+    <section class="about" id="sobre-mi">
+        <div class="profile-container reveal">
+            <img src="meprof.jpg" alt="Valentin Demarco" class="profile-image">
+        </div>
+        <div class="about-text reveal">
+            <h2>Mucho más que diseño visual.</h2>
+            <p>Como co-fundador y diseñador UX/UI, entiendo que una interfaz exitosa no solo debe ser estética, sino también rentable y funcional.</p>
+            <p>Me especializo en crear plataformas virtuales reales, priorizando siempre la usabilidad.</p>
+            <div style="margin-top: 2rem;">
+                <strong style="color: var(--accent-warm);">📍 Residente Argentino</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="work" id="proyectos">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 3rem;" class="reveal">Proyectos</h2>
+        
+        <div class="projects-grid">
+            <div class="project-card reveal" onclick="openCase('vitalis')">
+                <div class="project-thumb">
+                    <img src="Home Vitalis.jpg" alt="Vitalis">
+                </div>
+                <div class="project-info">
+                    <span style="color: var(--accent-warm); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;">UX/UI CASE STUDY</span>
+                    <h3 style="font-family: 'Playfair Display'; margin: 0.5rem 0; font-size: 1.8rem;">Vitalis Salud</h3>
+                    <p style="color: var(--text-light);">Plataforma digital para gestión de estudios médicos laborales.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="education" id="formacion">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;" class="reveal">Formación</h2>
+        <p class="reveal" style="color: var(--text-light); max-width: 600px; margin-bottom: 3rem;">
+            Me formé como Técnico Informático en el secundario EEST N8 en Lanús Oeste, Provincia de Buenos Aires.
+            <br><br>
+            Realicé un curso en el año 2020 de Diseño Gráfico, donde aprendi mucho sobre las herramientas de Adobe, principalmente Photoshop e Illustrator.
+            <br><br>
+            Posteriormente mi aprendizaje fue en el área del diseño UX/UI, que me interioricé muchisimo en los cursos que hice en Google by Coursera y Coderhouse.
+            <br><br>
+            Actualmente estoy cursando la Diplomatura UX/UI en la UTN (Universidad Tecnológica Argentina), desarrollando aun más mis habilidades y conocimientos como UXer.
+        </p>
+        
+        <div class="education-grid">
+            <a href="Certificado Coder Inicial.pdf" target="_blank" class="cert-card reveal">
+                <div class="cert-icon">📄</div>
+                <div class="cert-info">
+                    <h3>Diseño UX/UI Inicial</h3>
+                    <p>Coderhouse • 2024</p>
+                    <span>Ver PDF ↗</span>
+                </div>
+            </a>
+            
+            <a href="Coursera Curso 1 UX.pdf" target="_blank" class="cert-card reveal">
+                <div class="cert-icon">📄</div>
+                <div class="cert-info">
+                    <h3>Fundamentos del diseño de la experiencia del usuario (UX)</h3>
+                    <p>Google by Coursera • 2023</p>
+                    <span>Ver PDF ↗</span>
+                </div>
+            </a>
+
+            <a href="Coursera Curso 2 UX.pdf" target="_blank" class="cert-card reveal">
+                <div class="cert-icon">📄</div>
+                <div class="cert-info">
+                    <h3>Comience el proceso de diseño UX: Empatizar, Definir e Idear</h3>
+                    <p>Google by Coursera • 2023</p>
+                    <span>Ver PDF ↗</span>
+                </div>
+            </a>
+
+            <a href="Coursera Curso 3 UX.pdf" target="_blank" class="cert-card reveal">
+                <div class="cert-icon">📄</div>
+                <div class="cert-info">
+                    <h3>Construir Wireframes y prototipos de baja fidelidad</h3>
+                    <p>Google by Coursera • 2023</p>
+                    <span>Ver PDF ↗</span>
+                </div>
+            </a>
+
+             <a href="Coursera Curso 4 UX.pdf" target="_blank" class="cert-card reveal">
+                <div class="cert-icon">📄</div>
+                <div class="cert-info">
+                    <h3>Realizar investigaciones de UX y probar conceptos iniciales</h3>
+                    <p>Google by Coursera • 2024</p>
+                    <span>Ver PDF ↗</span>
+                </div>
+            </a>
+
+            <a href="Certificado Edutin 2020.pdf" target="_blank" class="cert-card reveal">
+                <div class="cert-icon">📄</div>
+                <div class="cert-info">
+                    <h3>Curso de diseño gráfico</h3>
+                    <p>Edutin Academy • 2020</p>
+                    <span>Ver PDF ↗</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 1rem;">Hablemos.</h2>
+        <p style="opacity: 0.8; max-width: 500px; margin: 0 auto 2rem;">¿Buscas llevar tu producto al siguiente nivel con un enfoque UX estratégico?</p>
+        <div style="display: flex; justify-content: center; gap: 2rem;">
+            <a href="#" style="color: white; text-decoration: none;">LinkedIn</a>
+            <a href="mailto:tuemail@ejemplo.com" style="color: white; text-decoration: none;">Email</a>
+        </div>
+    </footer>
+
+    <div id="case-study-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 9999; display: none; overflow-y: auto; opacity: 0; transform: translateY(30px); transition: opacity 0.4s ease, transform 0.4s ease;">
+        <button onclick="closeCase()" style="position: fixed; top: 2rem; right: 2rem; background: #2d4059; color: white; border: none; padding: 1rem 1.5rem; border-radius: 50px; cursor: pointer; font-weight: 600; z-index: 10000;">← Volver</button>
+        <div style="padding: 10rem 8% 4rem; text-align: center;">
+            <h2 id="case-title" style="font-family: 'Playfair Display', serif; font-size: 3.5rem;"></h2>
+            <p id="case-subtitle" style="color: #555555; margin-top: 1rem;"></p>
+            <a id="case-behance-link" href="#" target="_blank" style="display: inline-block; margin-top: 1.5rem; color: var(--accent-warm); text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1px solid var(--accent-warm); padding: 0.5rem 1.2rem; border-radius: 50px; transition: 0.3s;">Ver en Behance ↗</a>
+        </div>
+        <div style="width: 100%; max-width: 1400px; margin: 0 auto; background: #f9f9f9;">
+            <img id="case-image" src="" alt="Case Study Full View" style="width: 100%; display: block;">
+        </div>
+    </div>
+
+<script>
+        // 1. Animación de aparición (Reveal)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 2. Base de datos de proyectos (SOLO UNA VEZ)
+        const projectsData = {
+    'vitalis': {
+        title: 'Vitalis: Salud Laboral',
+        subtitle: 'Digitalización integral de procesos médicos.',
+        image: 'Presentación.jpg',
+        behanceUrl: 'https://www.behance.net/gallery/243626325/UXUI-Design-Vitalis' // PEGA TU LINK AQUÍ
+    },
+};
+            // Cuando quieras agregar otro, lo haces aquí abajo separando con coma
+
+        // 3. Función para abrir el proyecto
+        function openCase(projectId) {
+    const data = projectsData[projectId];
+    if (!data) return;
+
+    document.getElementById('case-title').innerText = data.title;
+    document.getElementById('case-subtitle').innerText = data.subtitle;
+    document.getElementById('case-image').src = data.image;
+    
+    // ESTA ES LA LÍNEA NUEVA:
+    document.getElementById('case-behance-link').href = data.behanceUrl;
+
+    const overlay = document.getElementById('case-study-overlay');
+    overlay.style.display = 'block';
+    
+    setTimeout(() => {
+        overlay.style.opacity = '1';
+        overlay.style.transform = 'translateY(0)';
+        document.body.style.overflow = 'hidden';
+    }, 10);
+}
+
+        // 4. Función para cerrar el proyecto
+        function closeCase() {
+            const overlay = document.getElementById('case-study-overlay');
+            overlay.style.opacity = '0';
+            overlay.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Devuelve el scroll
+            }, 400);
+        }
+    </script>
+</body>
+</html>
