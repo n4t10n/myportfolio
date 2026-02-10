@@ -1,31 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UX/UI Designer Portfolio | Valentin Demarco</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Valentin Demarco | UX/UI Designer | Castillo Infinito</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-light: #fcfaf8;
-            --bg-gradient: linear-gradient(135deg, #fcfaf8 0%, #f2f5f8 100%);
-            --accent-cold: #2d4059;    
-            --accent-warm: #e59866;    
-            --text-main: #1a1a1a;
-            --text-light: #555555;
-            --white: #ffffff;
-            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-dark: #120A24; /* Púrpura muy oscuro, casi negro */
+            --bg-gradient: linear-gradient(180deg, #120A24 0%, #0A0510 100%); /* Gradiente de profundidad */
+            --card-bg: rgba(25, 15, 40, 0.6); /* Fondo de tarjeta semitransparente oscuro */
+            --accent-red: #D7263D; /* Rojo sangre para acentos */
+            --accent-purple: #8B4DCC; /* Púrpura demoníaco para destacar */
+            --text-light: #f0e6f6; /* Blanco roto para el texto principal */
+            --text-dim: #b0a0c0; /* Púrpura claro para texto secundario */
+            --border-glow: rgba(139, 77, 204, 0.4); /* Resplandor para bordes */
+            --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transición suave */
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
+            font-family: 'Inter', sans-serif; /* Usamos Inter como base para legibilidad */
+            background-color: var(--bg-dark);
             background-image: var(--bg-gradient);
-            color: var(--text-main);
-            line-height: 1.6;
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- Efecto de fondo de partículas/motas (como polvo flotante) --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="80" r="0.5" fill="%23b0a0c0" opacity="0.1"/><circle cx="50" cy="50" r="0.8" fill="%23b0a0c0" opacity="0.15"/><circle cx="80" cy="20" r="0.6" fill="%23b0a0c0" opacity="0.12"/><circle cx="10" cy="10" r="0.4" fill="%23b0a0c0" opacity="0.08"/><circle cx="90" cy="90" r="0.7" fill="%23b0a0c0" opacity="0.1"/><circle cx="35" cy="40" r="0.6" fill="%23b0a0c0" opacity="0.1"/></svg>');
+            background-size: 100px 100px; /* Tamaño de las motas */
+            animation: animateBackground 60s linear infinite;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        @keyframes animateBackground {
+            from { background-position: 0 0; }
+            to { background-position: 100vw 100vh; }
         }
 
         /* --- Navegación --- */
@@ -36,341 +60,624 @@
             align-items: center;
             position: fixed;
             width: 100%;
-            background: rgba(252, 250, 248, 0.85);
+            background: rgba(18, 10, 36, 0.6); /* Un poco más transparente */
             backdrop-filter: blur(15px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(139, 77, 204, 0.2); /* Borde sutil */
         }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--accent-cold); text-decoration: none; }
-        .nav-links a { text-decoration: none; color: var(--text-main); margin-left: 2rem; font-size: 0.85rem; font-weight: 500; }
+        .logo { 
+            font-family: 'Crimson Pro', serif; 
+            font-size: 1.6rem; 
+            font-weight: 700; 
+            color: var(--accent-red); 
+            text-decoration: none; 
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(215, 38, 61, 0.6);
+        }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-dim); 
+            margin-left: 2.5rem; 
+            font-size: 0.9rem; 
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a:hover { color: var(--accent-purple); text-shadow: 0 0 8px var(--accent-purple); }
+        .nav-links a::after { /* Efecto de subrayado fantasmal */
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: var(--accent-purple);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+            background: var(--accent-red);
+        }
 
-        /* --- Hero --- */
+        /* --- Hero Section (con ambiente misterioso) --- */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            align-items: center;
             padding: 0 8%;
             position: relative;
             overflow: hidden;
-        }
-        
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: -10%;
-            right: -5%;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, rgba(229, 152, 102, 0.08) 0%, rgba(252, 250, 248, 0) 70%);
-            z-index: -1;
+            background: radial-gradient(circle at 70% 30%, rgba(139, 77, 204, 0.08) 0%, transparent 60%),
+                        radial-gradient(circle at 20% 80%, rgba(215, 38, 61, 0.05) 0%, transparent 50%);
         }
 
-        .hero span { color: var(--accent-warm); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 1rem; display: block; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; max-width: 900px; }
-
-        /* --- Sobre Mí --- */
-        .about {
-            padding: 8rem 8%;
-            background: var(--white);
+        .hero-container {
             display: grid;
             grid-template-columns: 1fr 1.5fr;
             gap: 5rem;
             align-items: center;
-        }
-
-        .profile-container { position: relative; width: 100%; max-width: 400px; }
-        .profile-image {
             width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 15px solid var(--bg-light);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-
-        .profile-container::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            right: -10px;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--accent-warm);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        .about-text h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1.5rem; }
-        .about-text p { color: var(--text-light); font-size: 1.1rem; margin-bottom: 1.5rem; }
-
-        /* --- Proyectos (Grid Corregido) --- */
-        .work { padding: 8rem 8%; }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 3rem;
-            width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .project-card {
+        .hero-image-wrapper { 
+            position: relative; 
+            padding: 10px; /* Para el resplandor */
+            border-radius: 20px;
+            background: rgba(139, 77, 204, 0.1); /* Fondo sutil para la imagen */
+            box-shadow: 0 0 20px rgba(139, 77, 204, 0.2);
+            transition: var(--transition);
+        }
+        .hero-image-wrapper:hover { box-shadow: 0 0 30px rgba(139, 77, 204, 0.4), 0 0 50px rgba(215, 38, 61, 0.1); }
+
+        .hero-image {
             width: 100%;
+            aspect-ratio: 1/1.2;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid var(--accent-purple);
+            filter: brightness(0.8) contrast(1.2); /* Oscurecer y contrastar para el ambiente */
+        }
+        
+        .hero-content {
+            font-family: 'Noto Serif JP', serif; /* Para los títulos, más tradicional */
+        }
+        .hero-content span { color: var(--accent-red); font-weight: 600; font-size: 1rem; letter-spacing: 1px; }
+        .hero-content h1 { 
+            font-size: clamp(3rem, 7vw, 5.5rem); 
+            line-height: 1.1; 
+            margin: 1.5rem 0; 
+            color: var(--text-light);
+            text-shadow: 0 0 15px rgba(240, 230, 246, 0.3);
+        }
+        .hero-content p { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin-bottom: 2.5rem; }
+
+        .hero-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent-red);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(215, 38, 61, 0.4);
+            transition: var(--transition);
+        }
+        .hero-button:hover { 
+            background: var(--accent-purple); 
+            box-shadow: 0 0 25px rgba(139, 77, 204, 0.6); 
+            transform: translateY(-3px); 
+        }
+
+        /* --- Secciones Generales --- */
+        section { padding: 3rem 8%; max-width: 1400px; margin: 0 auto; position: relative; }
+        .section-header { margin-bottom: 4rem; text-align: center; }
+        .section-header h2 { 
+            font-family: 'Noto Serif JP', serif; 
+            font-size: clamp(2rem, 5vw, 3.5rem); 
+            margin-bottom: 1.5rem; 
+            color: var(--accent-purple);
+            text-shadow: 0 0 10px rgba(139, 77, 204, 0.4);
+            position: relative;
+            display: inline-block;
+        }
+        .section-header h2::after { /* Separador místico */
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -15px;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent-red), transparent);
+        }
+        .section-header p { color: var(--text-dim); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+
+        /* --- Grid de Tarjetas (Proyectos, Formación) --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(139, 77, 204, 0.3);
+            box-shadow: 0 0 10px rgba(139, 77, 204, 0.1);
+            transition: var(--transition);
             text-decoration: none;
             color: inherit;
-            display: block;
-            cursor: pointer;
-            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover { 
+            border-color: var(--accent-red);
+            box-shadow: 0 0 25px rgba(215, 38, 61, 0.3), 0 0 10px rgba(139, 77, 204, 0.4);
+            transform: translateY(-8px);
+            background: rgba(25, 15, 40, 0.9);
+        }
+        
+        /* Detalles internos de las tarjetas */
+        .card h3 { 
+            font-family: 'Noto Serif JP', serif; 
+            font-size: 1.6rem; 
+            margin-bottom: 0.8rem; 
+            color: var(--text-light); 
+            text-shadow: 0 0 5px rgba(240, 230, 246, 0.2);
+        }
+        .card p { color: var(--text-dim); font-size: 0.95rem; }
+        .card span { 
+            color: var(--accent-red); 
+            font-weight: 600; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
         }
 
-        .project-card:active { transform: scale(0.98); }
+        /* --- Proyectos Específicos (Card con imagen) --- */
+        .project-card { 
+            padding: 0; 
+            overflow: hidden; 
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-img { 
+            width: 100%; 
+            aspect-ratio: 16/9; 
+            object-fit: cover; 
+            filter: brightness(0.7) contrast(1.1); /* Estilo oscuro */
+            transition: var(--transition);
+        }
+        .project-card:hover .project-img { filter: brightness(0.9) contrast(1.2); }
+        .project-body { padding: 2rem; }
 
-        .project-thumb {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            background-color: var(--accent-cold);
-            border-radius: 12px;
-            overflow: hidden;
+        /* --- Formación (tarjetas simplificadas) --- */
+        .education-card .detail-text { margin-top: 1rem; color: var(--accent-red); font-weight: 600; }
+
+        /* --- Contacto --- */
+        #contacto { text-align: center; }
+        #contacto .contact-links a {
+            display: inline-block;
+            margin: 0 1.5rem;
+            padding: 0.8rem 2rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(139, 77, 204, 0.3);
+            border-radius: 8px;
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        #contacto .contact-links a:hover {
+            background: var(--accent-purple);
+            color: var(--text-light);
+            border-color: var(--accent-red);
+            box-shadow: 0 0 20px rgba(139, 77, 204, 0.5);
+            transform: translateY(-5px);
+        }
+
+        /* --- Vista Behance (Overlay - Castillo Infinito) --- */
+        #case-study-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-dark); z-index: 2000; display: none;
+            overflow-y: auto; opacity: 0; transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        #case-study-overlay.active { display: block; opacity: 1; transform: translateY(0); }
+
+        .close-btn {
+            position: fixed; top: 2rem; right: 2rem;
+            background: var(--accent-red); color: var(--text-light); border: none;
+            padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 700;
+            box-shadow: 0 0 15px rgba(215, 38, 61, 0.4);
+            transition: var(--transition);
+        }
+        .close-btn:hover { background: var(--accent-purple); box-shadow: 0 0 20px rgba(139, 77, 204, 0.6); }
+
+        .overlay-header { padding: 10rem 8% 4rem; text-align: center; }
+        .overlay-header h2 { 
+            font-family: 'Noto Serif JP', serif; 
+            font-size: clamp(3rem, 6vw, 5rem); 
+            color: var(--accent-red);
+            text-shadow: 0 0 20px rgba(215, 38, 61, 0.8);
             margin-bottom: 1.5rem;
         }
-
-        .project-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.8s ease;
-        }
-
-        .project-card:hover .project-thumb img { transform: scale(1.05); }
-
-        .slot-nuevo {
-            border: 2px dashed #ddd;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 16 / 10;
-            color: #999;
+        .overlay-header p { color: var(--text-dim); font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem; }
+        .overlay-behance-link {
+            display: inline-block;
+            background: var(--accent-purple);
+            color: var(--text-light);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(139, 77, 204, 0.4);
             transition: var(--transition);
         }
-
-        .slot-nuevo:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
-
-        /* --- Footer --- */
-        footer { 
-            padding: 6rem 8%; 
-            background: var(--accent-cold); 
-            color: white; 
-            text-align: center;
-            background-image: linear-gradient(rgba(45, 64, 89, 0.95), rgba(45, 64, 89, 0.95)), url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+        .overlay-behance-link:hover { 
+            background: var(--accent-red); 
+            box-shadow: 0 0 20px rgba(215, 38, 61, 0.6);
+            transform: translateY(-3px); 
         }
 
-        /* Animaciones */
-        .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
+        .overlay-content img { width: 100%; max-width: 1200px; margin: 0 auto; display: block; filter: brightness(0.8); }
+
+
+        /* --- Animaciones --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 900px) {
-            .about { grid-template-columns: 1fr; text-align: center; }
-            .profile-container { margin: 0 auto; }
-            .projects-grid { grid-template-columns: 1fr; }
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-image-wrapper { margin: 0 auto; }
+            .hero-content { margin-top: 3rem; }
+            .nav-links a { margin-left: 1rem; }
+        }
+        @media (max-width: 600px) {
+            .nav-links { display: none; } /* Ocultar nav en móvil para simplificar, se podría añadir un menú hamburguesa */
+            nav { justify-content: center; }
+            .hero, section { padding: 5rem 5%; }
+            .section-header h2 { font-size: 2.5rem; }
+            .card { padding: 1.5rem; }
+            .card h3 { font-size: 1.4rem; }
+            #contacto .contact-links a { margin: 0 0.5rem; padding: 0.6rem 1.5rem; font-size: 0.9rem; }
         }
 
-    .education { padding: 8rem 8%; background: var(--white); }
-        
-        .education-grid {
+        .curiosidades-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
+            perspective: 1000px;
         }
 
-        .cert-card {
+        .curiosidad-card {
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .curiosidad-card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .curiosidad-front, .curiosidad-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
             display: flex;
-            align-items: center;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            border-radius: 12px;
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .cert-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-color: var(--accent-warm);
-        }
-
-        .cert-icon {
-            font-size: 1.5rem;
-            margin-right: 1.2rem;
-            background: white;
-            width: 50px;
-            height: 50px;
-            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(139, 77, 204, 0.3);
         }
 
-        .cert-info h3 { font-size: 1rem; margin-bottom: 0.2rem; }
-        .cert-info p { font-size: 0.85rem; color: var(--text-light); }
-        .cert-info span { 
-            font-size: 0.75rem; 
-            color: var(--accent-warm); 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            display: block;
-            margin-top: 0.5rem;
+        .curiosidad-front {
+            background: var(--card-bg);
+            background-image: linear-gradient(45deg, rgba(139, 77, 204, 0.05), transparent);
         }
+
+        .curiosidad-back {
+            background: var(--accent-purple);
+            background-image: linear-gradient(135deg, var(--accent-purple), var(--bg-dark));
+            color: var(--text-light);
+            transform: rotateY(180deg);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .kanji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px var(--accent-purple));
+        }
+
+        /* Estilos para la cabecera de la tarjeta */
+.education-card {
+    /* Altura estática para mantener la simetría */
+    height: 280px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empuja el footer al fondo */
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(139, 77, 204, 0.3);
+    transition: var(--transition);
+    text-decoration: none;
+    overflow: hidden;
+}
+
+/* Controlamos el texto del título para que no rompa la caja */
+.cert-header h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    /* Limitamos a 3 líneas máximo por si el título es muy largo */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cert-header p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+/* Alineación inferior: Texto a la izquierda, Logo a la derecha */
+.cert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Empuja el contenido al fondo de la tarjeta */
+}
+
+.cert-logo-wrapper {
+    width: 45px; /* Un poco más pequeño para el footer */
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--accent-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0 10px var(--border-glow);
+    transition: var(--transition);
+}
+
+.cert-logo {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+/* Efecto hover coordinado */
+.education-card:hover .cert-logo-wrapper {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 15px rgba(215, 38, 61, 0.5);
+    transform: rotate(10deg) scale(1.1); /* Agregué una pequeña rotación mística */
+}
 
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="logo">VALENTIN DEMARCO</a>
+        <a href="#" class="logo">VALENTIN D.</a>
         <div class="nav-links">
+            <a href="#about-me">Sobre mí</a>
             <a href="#proyectos">Proyectos</a>
-            <a href="#formacion">Formación</a> <a href="#sobre-mi">Sobre mí</a>
+            <a href="#formacion">Formación</a>
             <a href="#contacto">Contacto</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="reveal">
-            <span>UX/UI Designer & Co-founder</span>
-            <h1>Diseños y soluciones centradas en los usuarios, impulsando la creatividad profesional.</h1>
-        </div>
-    </section>
-
-    <section class="about" id="sobre-mi">
-        <div class="profile-container reveal">
-            <img src="meprof.jpg" alt="Valentin Demarco" class="profile-image">
-        </div>
-        <div class="about-text reveal">
-            <h2>Mucho más que diseño visual.</h2>
-            <p>Como co-fundador y diseñador UX/UI, entiendo que una interfaz exitosa no solo debe ser estética, sino también rentable y funcional.</p>
-            <p>Me especializo en crear plataformas virtuales reales, priorizando siempre la usabilidad.</p>
-            <div style="margin-top: 2rem;">
-                <strong style="color: var(--accent-warm);">📍 Residente Argentino</strong>
+    <section class="hero" id="about-me">
+        <div class="hero-container">
+            <div class="hero-image-wrapper reveal">
+                <img src="meprof.png" alt="Valentin Demarco" class="hero-image">
+            </div>
+            <div class="hero-content reveal">
+                <span>UX/UI Designer & Co-founder</span>
+                <h1>Valentin <span style="color: var(--accent-red);">Demarco</span></h1>
+                <p>Me considero detallista, ordenado y creativo a la hora de diseñar, intento que siempre la experiencia del usuario sea fluida y satistactoria. También que cada sección sea además de estética, funcional.</p>
+                <a href="#proyectos" class="hero-button">Ver Proyectos</a>
             </div>
         </div>
     </section>
 
-    <section class="work" id="proyectos">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 3rem;" class="reveal">Proyectos</h2>
-        
-        <div class="projects-grid">
-            <div class="project-card reveal" onclick="openCase('vitalis')">
-                <div class="project-thumb">
-                    <img src="Home Vitalis.jpg" alt="Vitalis">
+    <section id="proyectos" class="section">
+        <div class="section-header reveal">
+            <h2>Proyectos</h2>
+            <p>Algunas de las soluciones digitales que realicé.</p>
+        </div>
+        <div class="grid">
+            <div class="card project-card reveal" onclick="openCase('vitalis')">
+                <img src="Home Vitalis.jpg" alt="Vitalis Salud" class="project-img">
+                <div class="project-body">
+                    <span>UX/UI DESIGN • SALUD</span>
+                    <h3>Vitalis Salud</h3>
+                    <p>Sitio web para negocio de medicina laboral y Portal para pacientes y empresas cliente, profesionales y administradores.</p>
                 </div>
-                <div class="project-info">
-                    <span style="color: var(--accent-warm); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;">UX/UI CASE STUDY</span>
-                    <h3 style="font-family: 'Playfair Display'; margin: 0.5rem 0; font-size: 1.8rem;">Vitalis Salud</h3>
-                    <p style="color: var(--text-light);">Plataforma digital para gestión de estudios médicos laborales.</p>
+            </div>
+            <div class="card project-card reveal">
+                <div class="project-body" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%;">
+                    <h3 style="color: var(--accent-purple); margin-bottom: 1rem;">+ Próximo Proyecto</h3>
+                    <p style="color: var(--text-dim);">Llegará un nuevo proyecto pronto...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="formacion" class="section">
+        <div class="section-header reveal">
+            <h2>Formación</h2>
+            <p>Forjando mis habilidades a través de un camino de aprendizaje constante.</p>
+        </div>
+        <div class="grid">
+            <a href="Certificado Coder Inicial.pdf" target="_blank" class="card education-card reveal">
+    <div class="cert-header">
+        <h3>Diseño UX/UI Inicial</h3>
+        <p>Coderhouse • 2024</p>
+    </div>
+
+    <div class="cert-footer">
+        <span class="detail-text">Ver Certificado ↗</span>
+        <div class="cert-logo-wrapper">
+            <img src="coder.png" alt="Logo" class="cert-logo">
+        </div>
+    </div>
+</a>
+            <a href="Coursera Curso 4 UX.pdf" target="_blank" class="card education-card reveal">
+    <div class="cert-header">
+        <h3>Realizar investigaciones de UX y probar conceptos iniciales</h3>
+        <p>Google by Coursera • 2024</p>
+    </div>
+
+    <div class="cert-footer">
+        <span class="detail-text">Ver Certificado ↗</span>
+        <div class="cert-logo-wrapper">
+            <img src="google.png" alt="Logo Institución" class="cert-logo">
+        </div>
+    </div>
+</a>
+           <a href="Coursera Curso 3 UX.pdf" target="_blank" class="card education-card reveal">
+    <div class="cert-header">
+        <h3>Construir wireframes y prototipos de baja fidelidad</h3>
+        <p>Google by Coursera • 2023</p>
+    </div>
+
+    <div class="cert-footer">
+        <span class="detail-text">Ver Certificado ↗</span>
+        <div class="cert-logo-wrapper">
+            <img src="google.png" alt="Logo Institución" class="cert-logo">
+        </div>
+    </div>
+</a>
+
+            <a href="Coursera Curso 2 UX.pdf" target="_blank" class="card education-card reveal">
+    <div class="cert-header">
+        <h3>Comience el proceso de diseño UX: Empatizar, Definir e Idear</h3>
+        <p>Google by Coursera • 2023</p>
+    </div>
+
+    <div class="cert-footer">
+        <span class="detail-text">Ver Certificado ↗</span>
+        <div class="cert-logo-wrapper">
+            <img src="google.png" alt="Logo Institución" class="cert-logo">
+        </div>
+    </div>
+</a>
+            <a href="Coursera Curso 1 UX.pdf" target="_blank" class="card education-card reveal">
+    <div class="cert-header">
+        <h3>Fundamentos del diseño de la experiencia del usuario (UX)</h3>
+        <p>Google by Coursera • 2023</p>
+    </div>
+
+    <div class="cert-footer">
+        <span class="detail-text">Ver Certificado ↗</span>
+        <div class="cert-logo-wrapper">
+            <img src="google.png" alt="Logo Institución" class="cert-logo">
+        </div>
+    </div>
+</a>
+            <a href="Certificado Edutin 2020.pdf" target="_blank" class="card education-card reveal">
+    <div class="cert-header">
+        <h3>Curso de Diseño Gráfico</h3>
+        <p>Edutin Academy • 2020</p>
+    </div>
+
+    <div class="cert-footer">
+        <span class="detail-text">Ver Certificado ↗</span>
+        <div class="cert-logo-wrapper">
+            <img src="edutin.png" alt="Logo Institución" class="cert-logo">
+        </div>
+    </div>
+</a>
+        </div>
+    </section>
+
+        <section id="curiosidades" class="section">
+        <div class="section-header reveal">
+            <h2>Curiosidades</h2>
+            <p>Algunas de mis aficiones fuera del mundo del diseño.</p>
+        </div>
+        
+        <div class="curiosidades-grid">
+            <div class="curiosidad-card reveal">
+                <div class="curiosidad-front">
+                    <span class="kanji">🇯🇵</span>
+                    <h3>Japón "日本"</h3>
+                </div>
+                <div class="curiosidad-back">
+                    <p>"Soy un apasionado de la cultura japonesa y me gusta mucho el país en sí. Debido a esto arranque clases de Japonés hace un año y disfruto ver Animes en mis tiempos libres".</p>
                 </div>
             </div>
 
+            <div class="curiosidad-card reveal">
+                <div class="curiosidad-front">
+                    <span class="kanji">🎮</span>
+                    <h3>Tiempo libre</h3>
+                </div>
+                <div class="curiosidad-back">
+                    <p>"Disfruto de despejar la mente haciendo actividades como jugar al fútbol entre amigos y jugar videojuegos en mis tiempos libres."</p>
+                </div>
+            </div>
+
+            <div class="curiosidad-card reveal">
+                <div class="curiosidad-front">
+                    <span class="kanji">✈️</span>
+                    <h3>Aspiraciones</h3>
+                </div>
+                <div class="curiosidad-back">
+                    <p>"Me encanta el momento de viajar, ya sea con amigos, familia o solo. Uno de mis grandes sueños y objetivos es visitar la gran mayoria de paises posibles".</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="education" id="formacion">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;" class="reveal">Formación</h2>
-        <p class="reveal" style="color: var(--text-light); max-width: 600px; margin-bottom: 3rem;">
-            Me formé como Técnico Informático en el secundario EEST N8 en Lanús Oeste, Provincia de Buenos Aires.
-            <br><br>
-            Realicé un curso en el año 2020 de Diseño Gráfico, donde aprendi mucho sobre las herramientas de Adobe, principalmente Photoshop e Illustrator.
-            <br><br>
-            Posteriormente mi aprendizaje fue en el área del diseño UX/UI, que me interioricé muchisimo en los cursos que hice en Google by Coursera y Coderhouse.
-            <br><br>
-            Actualmente estoy cursando la Diplomatura UX/UI en la UTN (Universidad Tecnológica Argentina), desarrollando aun más mis habilidades y conocimientos como UXer.
-        </p>
-        
-        <div class="education-grid">
-            <a href="Certificado Coder Inicial.pdf" target="_blank" class="cert-card reveal">
-                <div class="cert-icon">📄</div>
-                <div class="cert-info">
-                    <h3>Diseño UX/UI Inicial</h3>
-                    <p>Coderhouse • 2024</p>
-                    <span>Ver PDF ↗</span>
-                </div>
-            </a>
-            
-            <a href="Coursera Curso 1 UX.pdf" target="_blank" class="cert-card reveal">
-                <div class="cert-icon">📄</div>
-                <div class="cert-info">
-                    <h3>Fundamentos del diseño de la experiencia del usuario (UX)</h3>
-                    <p>Google by Coursera • 2023</p>
-                    <span>Ver PDF ↗</span>
-                </div>
-            </a>
-
-            <a href="Coursera Curso 2 UX.pdf" target="_blank" class="cert-card reveal">
-                <div class="cert-icon">📄</div>
-                <div class="cert-info">
-                    <h3>Comience el proceso de diseño UX: Empatizar, Definir e Idear</h3>
-                    <p>Google by Coursera • 2023</p>
-                    <span>Ver PDF ↗</span>
-                </div>
-            </a>
-
-            <a href="Coursera Curso 3 UX.pdf" target="_blank" class="cert-card reveal">
-                <div class="cert-icon">📄</div>
-                <div class="cert-info">
-                    <h3>Construir Wireframes y prototipos de baja fidelidad</h3>
-                    <p>Google by Coursera • 2023</p>
-                    <span>Ver PDF ↗</span>
-                </div>
-            </a>
-
-             <a href="Coursera Curso 4 UX.pdf" target="_blank" class="cert-card reveal">
-                <div class="cert-icon">📄</div>
-                <div class="cert-info">
-                    <h3>Realizar investigaciones de UX y probar conceptos iniciales</h3>
-                    <p>Google by Coursera • 2024</p>
-                    <span>Ver PDF ↗</span>
-                </div>
-            </a>
-
-            <a href="Certificado Edutin 2020.pdf" target="_blank" class="cert-card reveal">
-                <div class="cert-icon">📄</div>
-                <div class="cert-info">
-                    <h3>Curso de diseño gráfico</h3>
-                    <p>Edutin Academy • 2020</p>
-                    <span>Ver PDF ↗</span>
-                </div>
-            </a>
+    <section id="contacto" class="section">
+        <div class="section-header reveal">
+            <h2>Contacto</h2>
+            <p>Contactame por alguna de mis redes de comunicación ✉️ .</p>
+        </div>
+        <div class="contact-links reveal">
+            <a href="https://www.linkedin.com/in/valentin-demarco-b8743b218/" target="_blank">LinkedIn</a>
+            <a href="mailto:valendemarco03@gmail.com">Email</a>
+            <a href="https://www.behance.net/valentndemarco" target="_blank">Behance</a>
         </div>
     </section>
 
-    <footer id="contacto">
-        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 1rem;">Hablemos</h2>
-        <p style="opacity: 0.8; max-width: 500px; margin: 0 auto 2rem;">Comunicate conmigo por mis canales de contacto</p>
-        <div style="display: flex; justify-content: center; gap: 2rem;">
-            <a href="https://www.linkedin.com/in/valentin-demarco-b8743b218/" style="color: white; text-decoration: none;">LinkedIn</a>
-            <a href="mailto:valendemarco03@gmail.com" style="color: white; text-decoration: none;">Email</a>
-        </div>
-    </footer>
 
-    <div id="case-study-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 9999; display: none; overflow-y: auto; opacity: 0; transform: translateY(30px); transition: opacity 0.4s ease, transform 0.4s ease;">
-        <button onclick="closeCase()" style="position: fixed; top: 2rem; right: 2rem; background: #2d4059; color: white; border: none; padding: 1rem 1.5rem; border-radius: 50px; cursor: pointer; font-weight: 600; z-index: 10000;">← Volver</button>
-        <div style="padding: 10rem 8% 4rem; text-align: center;">
-            <h2 id="case-title" style="font-family: 'Playfair Display', serif; font-size: 3.5rem;"></h2>
-            <p id="case-subtitle" style="color: #555555; margin-top: 1rem;"></p>
-            <a id="case-behance-link" href="#" target="_blank" style="display: inline-block; margin-top: 1.5rem; color: var(--accent-warm); text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1px solid var(--accent-warm); padding: 0.5rem 1.2rem; border-radius: 50px; transition: 0.3s;">Ver en Behance ↗</a>
+    <div id="case-study-overlay">
+        <button class="close-btn" onclick="closeCase()">CERRAR</button>
+        <div class="overlay-header">
+            <h2 id="case-title"></h2>
+            <p id="case-subtitle"></p> <a id="case-behance-link" href="#" target="_blank" class="overlay-behance-link" style="display: none;">Ver en Behance ↗</a>
         </div>
-        <div style="width: 100%; max-width: 1400px; margin: 0 auto; background: #f9f9f9;">
-            <img id="case-image" src="" alt="Case Study Full View" style="width: 100%; display: block;">
+        <div class="overlay-content">
+            <img id="case-image" src="" alt="Case Study Full View">
         </div>
     </div>
 
-<script>
-        // 1. Animación de aparición (Reveal)
+    <script>
+        // Animaciones de aparición al hacer scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -378,49 +685,47 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // 2. Base de datos de proyectos (SOLO UNA VEZ)
+        // Base de datos de proyectos para el modal
         const projectsData = {
-    'vitalis': {
-        title: 'Vitalis: Salud Laboral',
-        subtitle: 'Digitalización integral de procesos médicos.',
-        image: 'Presentación.jpg',
-        behanceUrl: 'https://www.behance.net/gallery/243626325/UXUI-Design-Vitalis' // PEGA TU LINK AQUÍ
-    },
-};
-            // Cuando quieras agregar otro, lo haces aquí abajo separando con coma
+            'vitalis': {
+                title: 'Vitalis Salud: UX/UI Case Study',
+                subtitle: 'Un proyecto donde la salud se encuentra con la eficiencia, diseñado para brindar productividad a los trabajadores.',
+                image: 'Presentación.jpg', // Asegúrate que este archivo exista en la misma carpeta
+                behanceUrl: 'https://www.behance.net/gallery/243626325/UXUI-Design-Vitalis' // Reemplaza con tu link
+            }
+            // Agrega más proyectos aquí si los necesitas
+        };
 
-        // 3. Función para abrir el proyecto
+        // Función para abrir el modal de proyecto
         function openCase(projectId) {
-    const data = projectsData[projectId];
-    if (!data) return;
+            const data = projectsData[projectId];
+            if (!data) {
+                console.error("Proyecto no encontrado:", projectId);
+                return;
+            }
 
-    document.getElementById('case-title').innerText = data.title;
-    document.getElementById('case-subtitle').innerText = data.subtitle;
-    document.getElementById('case-image').src = data.image;
-    
-    // ESTA ES LA LÍNEA NUEVA:
-    document.getElementById('case-behance-link').href = data.behanceUrl;
+            document.getElementById('case-title').innerText = data.title;
+            document.getElementById('case-subtitle').innerText = data.subtitle; // Añadido
+            document.getElementById('case-image').src = data.image;
 
-    const overlay = document.getElementById('case-study-overlay');
-    overlay.style.display = 'block';
-    
-    setTimeout(() => {
-        overlay.style.opacity = '1';
-        overlay.style.transform = 'translateY(0)';
-        document.body.style.overflow = 'hidden';
-    }, 10);
-}
+            const behanceLink = document.getElementById('case-behance-link');
+            if (data.behanceUrl) {
+                behanceLink.href = data.behanceUrl;
+                behanceLink.style.display = 'inline-block';
+            } else {
+                behanceLink.style.display = 'none';
+            }
 
-        // 4. Función para cerrar el proyecto
+            const overlay = document.getElementById('case-study-overlay');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evita scroll en el fondo
+        }
+
+        // Función para cerrar el modal
         function closeCase() {
             const overlay = document.getElementById('case-study-overlay');
-            overlay.style.opacity = '0';
-            overlay.style.transform = 'translateY(30px)';
-            
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Devuelve el scroll
-            }, 400);
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restaura scroll del fondo
         }
     </script>
 </body>
