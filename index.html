@@ -5,22 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentin Demarco | UX/UI Designer </title>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">    
     <style>
         :root {
-            /* MODO OSCURO (Default) */
-            --bg-dark: #120A24;
-            --bg-gradient: linear-gradient(180deg, #120A24 0%, #0A0510 100%);
-            --card-bg: rgba(25, 15, 40, 0.6);
-            --accent-red: #D7263D;
-            --accent-purple: #8B4DCC;
-            --text-light: #f0e6f6;
-            --text-dim: #b0a0c0;
-            --nav-bg: rgba(18, 10, 36, 0.6);
-            --border-glow: rgba(139, 77, 204, 0.4);
-            --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+                --bg-dark: #07080d;
+                --bg-gradient: radial-gradient(circle at 15% 15%, rgba(124, 92, 255, 0.22), transparent 32%),
+                   radial-gradient(circle at 85% 20%, rgba(0, 212, 255, 0.14), transparent 30%),
+                   radial-gradient(circle at 50% 90%, rgba(255, 78, 205, 0.10), transparent 35%),
+                   #07080d;
+                --card-bg: rgba(255, 255, 255, 0.055);
+                --accent-red: #7c5cff;
+                --accent-purple: #00d4ff;
+                --text-light: #f4f7fb;
+                --text-dim: #9aa4b2;
+                --nav-bg: rgba(7, 8, 13, 0.72);
+                --border-glow: rgba(0, 212, 255, 0.22);
+                --transition: all 220ms ease;
+}
 
         /* MODO CLARO (Activado por JS) */
         /* --- MODO CLARO PROFESIONAL Y DELICADO --- */
@@ -34,6 +35,34 @@ body.light-mode {
     --text-dim: #6d6875; /* Gris seda para detalles */
     --nav-bg: rgba(252, 250, 247, 0.85);
     --border-glow: rgba(107, 91, 149, 0.1);
+}
+
+body.light-mode .primary-button {
+    color: #ffffff;
+    box-shadow: 0 14px 40px rgba(107, 91, 149, 0.22);
+}
+
+body.light-mode .secondary-button {
+    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.65);
+    border-color: rgba(107, 91, 149, 0.22);
+}
+
+body.light-mode .hero-tags span,
+body.light-mode .google-cert-list a {
+    background: rgba(255, 255, 255, 0.65);
+    border-color: rgba(107, 91, 149, 0.16);
+}
+
+.google-cert-list a strong {
+    font: inherit;
+    color: inherit;
+}
+
+body.light-mode .education-card:hover h3,
+body.light-mode .education-card:hover p,
+body.light-mode .education-card:hover .detail-text {
+    color: inherit !important;
 }
 
 /* Refinamientos para la delicadeza visual */
@@ -80,63 +109,65 @@ body.light-mode .curiosidad-back {
     color: white;
 }
 
-/* Corregir visibilidad de texto en hover durante el modo claro */
-body.light-mode .education-card:hover h3,
-body.light-mode .education-card:hover p,
-body.light-mode .education-card:hover .detail-text {
-    color: #fcfaf7 !important; /* Color seda para resaltar sobre el púrpura/rojo */
-    text-shadow: none;
-}
-
 /* Ajuste opcional para que el logo brille más en el hover claro */
 body.light-mode .education-card:hover .cert-logo-wrapper {
     background: rgba(255, 255, 255, 0.2);
     border-color: #fcfaf7;
 }
 
-/* Corregir visibilidad en Proyectos durante el Modo Claro */
-body.light-mode .project-card:hover h3,
-body.light-mode .project-card:hover p,
-body.light-mode .project-card:hover span {
-    color: #fcfaf7 !important; /* Tono seda claro */
+body.light-mode .project-card:hover {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.96),
+        rgba(246, 242, 250, 0.92)
+    );
+    border-color: rgba(107, 91, 149, 0.32);
+    box-shadow: 0 20px 60px rgba(45, 42, 50, 0.12);
 }
 
-/* Suavizar la transición de la imagen para que no compita con el texto */
+body.light-mode .project-card:hover h3 {
+    color: #2d2a32 !important;
+}
+
+body.light-mode .project-card:hover p {
+    color: #6d6875 !important;
+}
+
+body.light-mode .project-card:hover span {
+    color: #6b5b95 !important;
+}
+
 body.light-mode .project-card:hover .project-img {
-    filter: brightness(0.6) contrast(1.2);
+    filter: brightness(0.94) contrast(1.03) saturate(0.98);
 }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body {
-            font-family: 'Inter', sans-serif; /* Usamos Inter como base para legibilidad */
-            background-color: var(--bg-dark);
-            background-image: var(--bg-gradient);
-            color: var(--text-light);
-            line-height: 1.7;
-            overflow-x: hidden;
-            position: relative;
-        }
+                font-family: 'Inter', sans-serif;
+                background: var(--bg-gradient);
+                color: var(--text-light);
+                line-height: 1.7;
+                overflow-x: hidden;
+                position: relative;
+}
 
-        /* --- Efecto de fondo de partículas/motas (como polvo flotante) --- */
-        body::before {
+        h1, h2, h3, .logo {
+            font-family: 'Space Grotesk', sans-serif;
+    }
+
+       body::before {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="80" r="0.5" fill="%23b0a0c0" opacity="0.1"/><circle cx="50" cy="50" r="0.8" fill="%23b0a0c0" opacity="0.15"/><circle cx="80" cy="20" r="0.6" fill="%23b0a0c0" opacity="0.12"/><circle cx="10" cy="10" r="0.4" fill="%23b0a0c0" opacity="0.08"/><circle cx="90" cy="90" r="0.7" fill="%23b0a0c0" opacity="0.1"/><circle cx="35" cy="40" r="0.6" fill="%23b0a0c0" opacity="0.1"/></svg>');
-            background-size: 100px 100px; /* Tamaño de las motas */
-            animation: animateBackground 60s linear infinite;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: linear-gradient(to bottom, black, transparent 85%);
+            pointer-events: none;
             z-index: -1;
-            opacity: 0.3;
-        }
-
-        @keyframes animateBackground {
-            from { background-position: 0 0; }
-            to { background-position: 100vw 100vh; }
-        }
+}
 
         /* --- Navegación --- */
         nav {
@@ -153,14 +184,13 @@ body.light-mode .project-card:hover .project-img {
     transition: var(--transition);
 }
         .logo { 
-            font-family: 'Crimson Pro', serif; 
-            font-size: 1.6rem; 
-            font-weight: 700; 
-            color: var(--accent-red); 
+            font-size: 1rem; 
+            font-weight: 800; 
+            color: var(--text-light); 
             text-decoration: none; 
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(215, 38, 61, 0.6);
-        }
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+}
         .nav-links a { 
             text-decoration: none; 
             color: var(--text-dim); 
@@ -190,89 +220,162 @@ body.light-mode .project-card:hover .project-img {
 
         /* --- Hero Section (con ambiente misterioso) --- */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 8%;
-            position: relative;
-            overflow: hidden;
-            background: radial-gradient(circle at 70% 30%, rgba(139, 77, 204, 0.08) 0%, transparent 60%),
-                        radial-gradient(circle at 20% 80%, rgba(215, 38, 61, 0.05) 0%, transparent 50%);
-        }
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 8% 5rem;
+    position: relative;
+    overflow: hidden;
+}
 
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 5rem;
-            align-items: center;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+.hero-container {
+    display: grid;
+    grid-template-columns: minmax(280px, 430px) minmax(0, 720px);
+    gap: clamp(4rem, 8vw, 8rem);
+    align-items: center;
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+}
 
-        .hero-image-wrapper { 
-            position: relative; 
-            padding: 10px; /* Para el resplandor */
-            border-radius: 20px;
-            background: rgba(139, 77, 204, 0.1); /* Fondo sutil para la imagen */
-            box-shadow: 0 0 20px rgba(139, 77, 204, 0.2);
-            transition: var(--transition);
-        }
-        .hero-image-wrapper:hover { box-shadow: 0 0 30px rgba(139, 77, 204, 0.4), 0 0 50px rgba(215, 38, 61, 0.1); }
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
 
-        .hero-image {
-            width: 100%;
-            aspect-ratio: 1/1.2;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 2px solid var(--accent-purple);
-            filter: brightness(0.8) contrast(1.2); /* Oscurecer y contrastar para el ambiente */
-        }
-        
-        .hero-content {
-            font-family: 'Noto Serif JP', serif; /* Para los títulos, más tradicional */
-        }
-        .hero-content span { color: var(--accent-red); font-weight: 600; font-size: 1rem; letter-spacing: 1px; }
-        .hero-content h1 { 
-            font-size: clamp(3rem, 7vw, 5.5rem); 
-            line-height: 1.1; 
-            margin: 1.5rem 0; 
-            color: var(--text-light);
-            text-shadow: 0 0 15px rgba(240, 230, 246, 0.3);
-        }
-        .hero-content p { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin-bottom: 2.5rem; }
+.hero-image-wrapper { 
+    position: relative; 
+    width: 100%;
+    max-width: 390px;
+    padding: 1px;
+    border-radius: 36px;
+    background: linear-gradient(135deg, rgba(124,92,255,.75), rgba(0,212,255,.35), rgba(255,255,255,.08));
+    box-shadow: 0 28px 100px rgba(0, 0, 0, 0.38);
+    transition: var(--transition);
+}
 
-        .hero-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--accent-red);
-            color: var(--text-light);
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(215, 38, 61, 0.4);
-            transition: var(--transition);
-        }
-        .hero-button:hover { 
-            background: var(--accent-purple); 
-            box-shadow: 0 0 25px rgba(139, 77, 204, 0.6); 
-            transform: translateY(-3px); 
-        }
+.hero-image-wrapper:hover {
+    transform: translateY(-4px);
+}
+
+.hero-image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 35px;
+    border: 0;
+    filter: saturate(.92) contrast(1.04) brightness(.9);
+    display: block;
+}
+
+
+
+.hero-content {
+    max-width: 720px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    color: var(--accent-purple);
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+}
+
+.hero-content h1 { 
+    font-size: clamp(3rem, 5.2vw, 5.7rem); 
+    line-height: .96; 
+    letter-spacing: -0.065em;
+    margin: 0 0 1.6rem; 
+    color: var(--text-light);
+    max-width: 680px;
+}
+
+.hero-content p { 
+    color: var(--text-dim); 
+    font-size: clamp(1rem, 1.25vw, 1.16rem); 
+    line-height: 1.85;
+    max-width: 650px; 
+    margin-bottom: 2.2rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 1.35rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: var(--transition);
+}
+
+.primary-button {
+    color: white;
+    background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+    box-shadow: 0 18px 60px rgba(124, 92, 255, .28);
+}
+
+.secondary-button {
+    color: var(--text-light);
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.045);
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+    transform: translateY(-2px);
+}
+
+.hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem;
+    max-width: 620px;
+}
+
+.hero-tags span {
+    padding: .5rem .82rem;
+    border: 1px solid rgba(255,255,255,.11);
+    border-radius: 999px;
+    background: rgba(255,255,255,.045);
+    color: var(--text-dim);
+    font-size: .82rem;
+    backdrop-filter: blur(10px);
+}
 
         /* --- Secciones Generales --- */
         section { padding: 3rem 8%; max-width: 1400px; margin: 0 auto; position: relative; }
         .section-header { margin-bottom: 4rem; text-align: center; }
         .section-header h2 { 
-            font-family: 'Noto Serif JP', serif; 
-            font-size: clamp(2rem, 5vw, 3.5rem); 
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.6rem, 5vw, 4.4rem); 
+            line-height: 1;
+            letter-spacing: -0.055em;
             margin-bottom: 1.5rem; 
-            color: var(--accent-purple);
-            text-shadow: 0 0 10px rgba(139, 77, 204, 0.4);
+            color: var(--text-light);
+            text-shadow: none;
             position: relative;
             display: inline-block;
-        }
+            background: linear-gradient(135deg, var(--text-light), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+}
         .section-header h2::after { /* Separador místico */
             content: '';
             position: absolute;
@@ -296,29 +399,31 @@ body.light-mode .project-card:hover .project-img {
         .card {
             background: var(--card-bg);
             padding: 2.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(139, 77, 204, 0.3);
-            box-shadow: 0 0 10px rgba(139, 77, 204, 0.1);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            box-shadow: 0 18px 70px rgba(0, 0, 0, 0.18);
             transition: var(--transition);
             text-decoration: none;
             color: inherit;
             position: relative;
             overflow: hidden;
-        }
+            backdrop-filter: blur(16px);
+}
         .card:hover { 
-            border-color: var(--accent-red);
-            box-shadow: 0 0 25px rgba(215, 38, 61, 0.3), 0 0 10px rgba(139, 77, 204, 0.4);
-            transform: translateY(-8px);
-            background: rgba(25, 15, 40, 0.9);
-        }
+            border-color: rgba(0, 212, 255, 0.35);
+            box-shadow: 0 24px 70px rgba(0, 212, 255, 0.10);
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.075);
+}
         
         /* Detalles internos de las tarjetas */
         .card h3 { 
-            font-family: 'Noto Serif JP', serif; 
+            font-family: 'Space Grotesk', sans-serif; 
             font-size: 1.6rem; 
+            line-height: 1.15;
             margin-bottom: 0.8rem; 
             color: var(--text-light); 
-            text-shadow: 0 0 5px rgba(240, 230, 246, 0.2);
+            text-shadow: none;
         }
         .card p { color: var(--text-dim); font-size: 0.95rem; }
         .card span { 
@@ -392,12 +497,12 @@ body.light-mode .project-card:hover .project-img {
 
         .overlay-header { padding: 10rem 8% 4rem; text-align: center; }
         .overlay-header h2 { 
-            font-family: 'Noto Serif JP', serif; 
+            font-family: 'Space Grotesk', sans-serif; 
             font-size: clamp(3rem, 6vw, 5rem); 
-            color: var(--accent-red);
-            text-shadow: 0 0 20px rgba(215, 38, 61, 0.8);
+            color: var(--text-light);
+            text-shadow: none;
             margin-bottom: 1.5rem;
-        }
+}
         .overlay-header p { color: var(--text-dim); font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem; }
         .overlay-behance-link {
             display: inline-block;
@@ -423,21 +528,203 @@ body.light-mode .project-card:hover .project-img {
         .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 900px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; }
-            .hero-image-wrapper { margin: 0 auto; }
-            .hero-content { margin-top: 3rem; }
-            .nav-links a { margin-left: 1rem; }
-        }
-        @media (max-width: 600px) {
-            .nav-links { display: none; } /* Ocultar nav en móvil para simplificar, se podría añadir un menú hamburguesa */
-            nav { justify-content: center; }
-            .hero, section { padding: 5rem 5%; }
-            .section-header h2 { font-size: 2.5rem; }
-            .card { padding: 1.5rem; }
-            .card h3 { font-size: 1.4rem; }
-            #contacto .contact-links a { margin: 0 0.5rem; padding: 0.6rem 1.5rem; font-size: 0.9rem; }
-        }
+              @media (max-width: 900px) {
+    .hero {
+        padding-top: 7rem;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 4.5rem;
+        text-align: center;
+    }
+
+    .hero-visual {
+        order: 2;
+    }
+
+    .hero-content {
+        order: 1;
+        margin: 0 auto;
+    }
+
+    .hero-content h1,
+    .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions,
+    .hero-tags {
+        justify-content: center;
+    }
+
+    .nav-links a {
+        margin-left: 1rem;
+    }
+    .education-grid {
+    grid-template-columns: 1fr;
+}
+}
+       @media (max-width: 600px) {
+    nav {
+        padding: 1rem 6%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: .82rem;
+        line-height: 1.3;
+        max-width: 110px;
+        letter-spacing: .14em;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: .55rem;
+        margin-left: auto;
+    }
+
+    .nav-links a {
+        display: none;
+    }
+
+    #theme-toggle,
+    #lang-toggle {
+        margin-left: 0 !important;
+        font-size: .78rem !important;
+        padding: .45rem .65rem !important;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 7.5rem 6% 4rem;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+        order: 1;
+    }
+
+    .hero-visual {
+        order: 2;
+        margin-top: .5rem;
+    }
+
+    .eyebrow {
+        justify-content: center;
+        font-size: .68rem;
+        letter-spacing: .16em;
+        margin-bottom: 1.1rem;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.35rem, 11.5vw, 3.15rem);
+        line-height: .95;
+        letter-spacing: -0.07em;
+        max-width: 360px;
+        margin: 0 auto 1.35rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        line-height: 1.75;
+        max-width: 335px;
+        margin: 0 auto 1.8rem;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        gap: .75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .primary-button,
+    .secondary-button {
+        min-height: 46px;
+        padding: 0 1rem;
+        font-size: .92rem;
+    }
+
+    .hero-tags {
+        display: none;
+    }
+
+    .hero-image-wrapper {
+        max-width: 285px;
+        border-radius: 28px;
+    }
+
+    .hero-image {
+        border-radius: 27px;
+        aspect-ratio: 4 / 5;
+    }
+
+    section {
+        padding: 4rem 6%;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.4rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+    }
+
+    .card {
+        padding: 1.35rem;
+        border-radius: 22px;
+    }
+
+    .project-body {
+        padding: 1.35rem;
+    }
+
+    .card h3 {
+        font-size: 1.35rem;
+    }
+
+    #contacto .contact-links {
+        display: grid;
+        gap: .8rem;
+    }
+
+    #contacto .contact-links a {
+        margin: 0;
+        padding: .85rem 1rem;
+        font-size: .92rem;
+    }
+    .education-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+}
+
+.education-card {
+    min-height: 280px;
+    padding: 1.35rem;
+    border-radius: 22px;
+}
+
+.google-cert-list a {
+    font-size: .86rem;
+    padding: .7rem .75rem;
+}
+}
 
         .curiosidades-grid {
             display: grid;
@@ -493,50 +780,77 @@ body.light-mode .project-card:hover .project-img {
         }
 
         /* Estilos para la cabecera de la tarjeta */
+.education-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
 .education-card {
-    /* Altura estática para mantener la simetría */
-    height: 280px; 
+    min-height: 280px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Empuja el footer al fondo */
+    justify-content: space-between;
     background: var(--card-bg);
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: 22px;
     border: 1px solid rgba(139, 77, 204, 0.3);
     transition: var(--transition);
     text-decoration: none;
     overflow: hidden;
 }
 
-/* Controlamos el texto del título para que no rompa la caja */
+.education-card:hover {
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.16);
+    transform: translateY(-6px);
+}
+
+.education-label {
+    display: inline-block;
+    color: var(--accent-purple);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: .9rem;
+}
+
 .cert-header h3 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1.3rem;
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
-    /* Limitamos a 3 líneas máximo por si el título es muy largo */
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    margin-bottom: .8rem;
+    color: var(--text-light);
 }
 
 .cert-header p {
-    font-size: 0.9rem;
+    font-size: .92rem;
+    line-height: 1.65;
     color: var(--text-dim);
 }
 
-/* Alineación inferior: Texto a la izquierda, Logo a la derecha */
 .cert-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto; /* Empuja el contenido al fondo de la tarjeta */
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.detail-text {
+    color: var(--accent-purple);
+    font-weight: 800;
+    font-size: .82rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
 }
 
 .cert-logo-wrapper {
-    width: 45px; /* Un poco más pequeño para el footer */
-    height: 45px;
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--accent-purple);
@@ -554,11 +868,83 @@ body.light-mode .project-card:hover .project-img {
     object-fit: contain;
 }
 
-/* Efecto hover coordinado */
 .education-card:hover .cert-logo-wrapper {
     border-color: var(--accent-red);
-    box-shadow: 0 0 15px rgba(215, 38, 61, 0.5);
-    transform: rotate(10deg) scale(1.1); /* Agregué una pequeña rotación mística */
+    box-shadow: 0 0 18px rgba(0, 212, 255, 0.35);
+    transform: rotate(8deg) scale(1.08);
+}
+
+.google-education-card {
+    position: relative;
+}
+
+.google-cert-list {
+    display: grid;
+    gap: .75rem;
+    margin-top: 1.5rem;
+}
+
+.google-cert-list a {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding: .75rem .85rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.09);
+    background: rgba(255,255,255,.04);
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: .9rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.google-cert-list a:hover {
+    color: var(--text-light);
+    border-color: rgba(0, 212, 255, .35);
+    background: rgba(0, 212, 255, .07);
+    transform: translateX(4px);
+}
+
+.google-cert-list a span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: rgba(0, 212, 255, .1);
+    color: var(--accent-purple);
+    font-size: .72rem;
+    font-weight: 900;
+}
+
+@media (max-width: 900px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+    }
+
+    .education-card {
+        min-height: auto;
+        padding: 1.35rem;
+        border-radius: 22px;
+    }
+
+    .google-cert-list a {
+        font-size: .86rem;
+        padding: .7rem .75rem;
+    }
+}
+
+.muted-detail {
+    color: var(--text-dim);
 }
 
     </style>
@@ -584,18 +970,42 @@ body.light-mode .project-card:hover .project-img {
         </nav>
 
     <section class="hero" id="about-me">
-        <div class="hero-container">
-            <div class="hero-image-wrapper reveal">
-                <img src="meprof.png" alt="Valentin Demarco" class="hero-image">
+    <div class="hero-container">
+
+        <div class="hero-visual reveal">
+            <div class="hero-image-wrapper">
+                <img src="meprofile.png" alt="Valentin Demarco" class="hero-image">
             </div>
-            <div class="hero-content reveal">
-            <span data-key="hero-role">UX/UI Designer orientado a producto</span>
-            <h1 data-key="hero-title">Valentin <span style="color: var(--accent-red);">Demarco</span></h1>
-            <p data-key="hero-desc">Diseño experiencias digitales que resuelven problemas reales de negocio; desde el research hasta la interfaz final. Buscando crecer dentro de un equipo de producto donde el proceso y el impacto importen.</p>
-            <a href="#proyectos" class="hero-button" data-key="hero-button">Ver Proyectos</a>
-</div>
+
         </div>
-    </section>
+
+        <div class="hero-content reveal">
+            <span class="eyebrow" data-key="hero-role">UX/UI Designer · Interfaces orientadas a producto</span>
+
+            <h1 data-key="hero-title">
+                Diseño interfaces digitales para productos reales.
+            </h1>
+
+            <p data-key="hero-desc">
+                Trabajo en experiencias web, sistemas SaaS y plataformas operativas donde la interfaz debe ordenar procesos, reducir fricción y acompañar objetivos reales de negocio.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#proyectos" class="primary-button" data-key="hero-button">Ver proyectos</a>
+                <a href="mailto:valendemarco03@gmail.com" class="secondary-button">Contactar</a>
+            </div>
+
+            <div class="hero-tags">
+                <span>UX Research</span>
+                <span>Product Design</span>
+                <span>SaaS</span>
+                <span>Dashboards</span>
+                <span>Figma</span>
+            </div>
+        </div>
+
+    </div>
+</section>
 
    <section id="proyectos" class="section">
     <div class="section-header reveal">
@@ -611,7 +1021,6 @@ body.light-mode .project-card:hover .project-img {
                 <p data-key="project-vitalis-desc">Sitio web para negocio de medicina laboral y Portal para pacientes y empresas cliente, profesionales y administradores.</p>
             </div>
         </div>
-        <div class="grid">
         <div class="card project-card reveal" onclick="openCase('travelmate')">
             <img src="Home TravelMate.jpg" alt="TravelMate" class="project-img">
             <div class="project-body">
@@ -627,86 +1036,78 @@ body.light-mode .project-card:hover .project-img {
     <section id="formacion" class="section">
     <div class="section-header reveal">
         <h2 data-key="edu-title">Formación</h2>
-        <p data-key="edu-subtitle">Forjando mis habilidades a través de un camino de aprendizaje constante.</p>
+        <p data-key="edu-subtitle">Aprendizaje continuo en UX/UI, investigación, prototipado y diseño visual.</p>
     </div>
-    <div class="grid">
-       <a href="Certificado Coder Inicial.pdf" target="_blank" class="card education-card reveal" data-key="link-coder">
+
+    <div class="education-grid">
+
+       <a href="Certificado Coder Inicial.pdf" target="_blank" rel="noopener noreferrer" class="card education-card reveal" data-key="link-coder">
     <div class="cert-header">
+        <span class="education-label">Coderhouse · 2024</span>
         <h3 data-key="cert-ux-coder">Diseño UX/UI Inicial</h3>
-        <p>Coderhouse • 2024</p>
+        <p data-key="cert-ux-coder-desc">Formación inicial en diseño de interfaces, arquitectura visual, wireframes, prototipado y criterios básicos de experiencia de usuario.</p>
     </div>
+
     <div class="cert-footer">
-        <span class="detail-text" data-key="view-cert">Ver Certificado ↗</span>
+        <span class="detail-text" data-key="view-cert">Ver certificado ↗</span>
         <div class="cert-logo-wrapper">
             <img src="coder.png" alt="Logo Coderhouse" class="cert-logo">
         </div>
     </div>
 </a>
 
-        <a href="Coursera Curso 4 UX.pdf" target="_blank" class="card education-card reveal" data-key="link-google-4">
-        <div class="cert-header">
-            <h3 data-key="cert-google-4">Realizar investigaciones de UX y probar conceptos iniciales</h3>
-            <p>Google by Coursera • 2024</p>
-        </div>
-        <div class="cert-footer">
-            <span class="detail-text" data-key="view-cert">Ver Certificado ↗</span>
-            <div class="cert-logo-wrapper">
-                <img src="google.png" alt="Logo Google" class="cert-logo">
-            </div>
-        </div>
-        </a>
-
-        <a href="Coursera Curso 3 UX.pdf" target="_blank" class="card education-card reveal" data-key="link-google-3">
-        <div class="cert-header">
-            <h3 data-key="cert-google-3">Construir wireframes y prototipos de baja fidelidad</h3>
-            <p>Google by Coursera • 2023</p>
-        </div>
-        <div class="cert-footer">
-            <span class="detail-text" data-key="view-cert">Ver Certificado ↗</span>
-            <div class="cert-logo-wrapper">
-                <img src="google.png" alt="Logo Google" class="cert-logo">
-            </div>
-        </div>
-        </a>
-
-        <a href="Coursera Curso 2 UX.pdf" target="_blank" class="card education-card reveal" data-key="link-google-2">
-        <div class="cert-header">
-            <h3 data-key="cert-google-2">Comience el proceso de diseño UX: Empatizar, Definir e Idear</h3>
-            <p>Google by Coursera • 2023</p>
-        </div>
-        <div class="cert-footer">
-            <span class="detail-text" data-key="view-cert">Ver Certificado ↗</span>
-            <div class="cert-logo-wrapper">
-                <img src="google.png" alt="Logo Google" class="cert-logo">
-            </div>
-        </div>
-         </a>
-
-        <a href="Coursera Curso 1 UX.pdf" target="_blank" class="card education-card reveal" data-key="link-google-1">
-        <div class="cert-header">
-            <h3 data-key="cert-google-1">Fundamentos del diseño de la experiencia del usuario (UX)</h3>
-            <p>Google by Coursera • 2023</p>
-        </div>
-        <div class="cert-footer">
-            <span class="detail-text" data-key="view-cert">Ver Certificado ↗</span>
-            <div class="cert-logo-wrapper">
-                <img src="google.png" alt="Logo Google" class="cert-logo">
-            </div>
-        </div>
-        </a>
-
-        <a href="Certificado Edutin 2020.pdf" target="_blank" class="card education-card reveal" data-key="link-edutin">
+        <div class="card education-card google-education-card reveal">
     <div class="cert-header">
-        <h3 data-key="cert-graphic">Curso de Diseño Gráfico</h3>
-        <p>Edutin Academy • 2020</p>
+        <span class="education-label">Google by Coursera · 2023—2024</span>
+        <h3 data-key="google-card-title">Certificados UX de Google</h3>
+        <p data-key="google-card-desc">Formación enfocada en fundamentos UX, empatizar, definir, idear, wireframes, prototipos e investigación con usuarios.</p>
     </div>
+
+    <div class="google-cert-list">
+        <a href="Coursera Curso 1 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-1">
+            <span>01</span>
+            <strong data-key="google-cert-1">Fundamentos de UX</strong>
+        </a>
+
+        <a href="Coursera Curso 2 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-2">
+            <span>02</span>
+            <strong data-key="google-cert-2">Empatizar, definir e idear</strong>
+        </a>
+
+        <a href="Coursera Curso 3 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-3">
+            <span>03</span>
+            <strong data-key="google-cert-3">Wireframes y prototipos low-fi</strong>
+        </a>
+
+        <a href="Coursera Curso 4 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-4">
+            <span>04</span>
+            <strong data-key="google-cert-4">Investigación UX y pruebas</strong>
+        </a>
+    </div>
+
     <div class="cert-footer">
-        <span class="detail-text" data-key="view-cert">Ver Certificado ↗</span>
+        <span class="detail-text muted-detail" data-key="google-card-footer">4 certificados incluidos</span>
+        <div class="cert-logo-wrapper">
+            <img src="google.png" alt="Logo Google" class="cert-logo">
+        </div>
+    </div>
+</div>
+
+        <a href="Certificado Edutin 2020.pdf" target="_blank" rel="noopener noreferrer" class="card education-card reveal" data-key="link-edutin">
+    <div class="cert-header">
+        <span class="education-label">Edutin Academy · 2020</span>
+        <h3 data-key="cert-graphic">Curso de Diseño Gráfico</h3>
+        <p data-key="cert-graphic-desc">Base complementaria en composición, comunicación visual, jerarquía gráfica y fundamentos de diseño.</p>
+    </div>
+
+    <div class="cert-footer">
+        <span class="detail-text" data-key="view-cert">Ver certificado ↗</span>
         <div class="cert-logo-wrapper">
             <img src="edutin.png" alt="Logo Edutin" class="cert-logo">
         </div>
     </div>
 </a>
+
     </div>
 </section>
 
@@ -752,12 +1153,12 @@ body.light-mode .project-card:hover .project-img {
     <section id="contacto" class="section">
         <div class="section-header reveal">
             <h2 data-key="contact-title">Contacto</h2>
-            <p data-key="contact-subtitle">Contactame por alguna de mis redes de comunicación ✉️ .</p>
+            <p data-key="contact-subtitle">Disponible para colaborar en proyectos de producto, diseño UX/UI y sistemas digitales.</p>
         </div>
         <div class="contact-links reveal">
-            <a href="https://www.linkedin.com/in/valentin-demarco-b8743b218/" target="_blank">LinkedIn</a>
-            <a href="mailto:valendemarco03@gmail.com">Email</a>
-            <a href="https://www.behance.net/valentndemarco" target="_blank">Behance</a>
+            <a href="https://www.linkedin.com/in/valentin-demarco-b8743b218/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:valendemarco03@gmail.com" rel="noopener noreferrer" >Email</a>
+            <a href="https://www.behance.net/valentndemarco" target="_blank" rel="noopener noreferrer">Behance</a>
         </div>
     </section>
 
@@ -842,10 +1243,10 @@ body.light-mode .project-card:hover .project-img {
             "nav-edu": "Formación",
             "nav-contact": "Contacto",
             "nav-mode": "🌓 Modo",
-            "hero-role": "UX/UI Designer orientado a producto",
-            "hero-title": "Valentin Demarco",
-            "hero-desc": "Diseño experiencias digitales que resuelven problemas reales de negocio; desde el research hasta la interfaz final. Buscando crecer dentro de un equipo de producto donde el proceso y el impacto importen.",            
-            "hero-button": "Ver Proyectos",
+            "hero-role": "UX/UI Designer · Interfaces orientadas a producto",
+            "hero-title": "Diseño interfaces digitales para productos reales.",
+            "hero-desc": "Trabajo en experiencias web, sistemas SaaS y plataformas operativas donde la interfaz debe ordenar procesos, reducir fricción y acompañar objetivos reales de negocio.",
+            "hero-button": "Ver proyectos",
             "projects-title": "Proyectos",
             "projects-subtitle": "Algunas de las soluciones digitales que realicé.",
             "project-vitalis-tag": "UX/UI DESIGN • SALUD",
@@ -854,14 +1255,19 @@ body.light-mode .project-card:hover .project-img {
             "project-next": "+ Próximo Proyecto",
             "project-next-desc": "Llegará un nuevo proyecto pronto...",
             "edu-title": "Formación",
-            "edu-subtitle": "Forjando mis habilidades a través de un camino de aprendizaje constante.",
+            "edu-subtitle": "Aprendizaje continuo en UX/UI, investigación, prototipado y diseño visual.",
             "cert-ux-coder": "Diseño UX/UI Inicial",
-            "cert-google-4": "Realizar investigaciones de UX y probar conceptos iniciales",
-            "cert-google-3": "Construir wireframes y prototipos de baja fidelidad",
-            "cert-google-2": "Comience el proceso de diseño UX: Empatizar, Definir e Idear",
-            "cert-google-1": "Fundamentos del diseño de la experiencia del usuario (UX)",
+            "cert-ux-coder-desc": "Formación inicial en diseño de interfaces, arquitectura visual, wireframes, prototipado y criterios básicos de experiencia de usuario.",
+            "google-card-title": "Certificados UX de Google",
+            "google-card-desc": "Formación enfocada en fundamentos UX, empatizar, definir, idear, wireframes, prototipos e investigación con usuarios.",
+            "google-cert-1": "Fundamentos de UX",
+            "google-cert-2": "Empatizar, definir e idear",
+            "google-cert-3": "Wireframes y prototipos low-fi",
+            "google-cert-4": "Investigación UX y pruebas",
+            "google-card-footer": "4 certificados incluidos",
             "cert-graphic": "Curso de Diseño Gráfico",
-            "view-cert": "Ver Certificado ↗",
+            "cert-graphic-desc": "Base complementaria en composición, comunicación visual, jerarquía gráfica y fundamentos de diseño.",
+            "view-cert": "Ver certificado ↗",
             "curiosity-title": "Curiosidades",
             "curiosity-subtitle": "Algunas de mis aficiones fuera del mundo del diseño.",
             "cur-jp-title": "Japón \"日本\"",
@@ -871,7 +1277,7 @@ body.light-mode .project-card:hover .project-img {
             "cur-travel-title": "Aspiraciones",
             "cur-travel-desc": "\"Me encanta el momento de viajar, ya sea con amigos, familia o solo. Uno de mis grandes sueños y objetivos es visitar la gran mayoría de países posibles\".",
             "contact-title": "Contacto",
-            "contact-subtitle": "Contactame por alguna de mis redes de comunicación ✉️ .",
+            "contact-subtitle": "Disponible para colaborar en proyectos de producto, diseño UX/UI y sistemas digitales.",            
             "link-coder": "Certificado Coder Inicial.pdf",
             "link-edutin": "Certificado Edutin 2020.pdf",
             "cert-graphic": "Curso de Diseño Gráfico",
@@ -886,10 +1292,10 @@ body.light-mode .project-card:hover .project-img {
             "nav-edu": "Education",
             "nav-contact": "Contact",
             "nav-mode": "🌓 Mode",
-            "hero-role": "UX/UI Designer focused on product",
-            "hero-title": "Valentin Demarco",
-            "hero-desc": "I design digital experiences that solve real business problems; from research to final interface. Looking to grow within a product team where process and impact actually matter.",
-            "hero-button": "View Projects",
+            "hero-role": "UX/UI Designer · Product-oriented interfaces",
+            "hero-title": "I design digital interfaces for real products.",
+            "hero-desc": "I work on web experiences, SaaS systems and operational platforms where the interface must organize processes, reduce friction and support real business goals.",
+            "hero-button": "View projects",
             "projects-title": "Projects",
             "projects-subtitle": "Some of the digital solutions I have created.",
             "project-vitalis-tag": "UX/UI DESIGN • HEALTH",
@@ -898,13 +1304,18 @@ body.light-mode .project-card:hover .project-img {
             "project-next": "+ Next Project",
             "project-next-desc": "A new project will be coming soon...",
             "edu-title": "Education",
-            "edu-subtitle": "Forging my skills through a path of constant learning.",
+            "edu-subtitle": "Continuous learning in UX/UI, research, prototyping and visual design.",
             "cert-ux-coder": "Initial UX/UI Design",
-            "cert-google-4": "Conduct UX Research and Test Early Concepts",
-            "cert-google-3": "Build Wireframes and Low-Fidelity Prototypes",
-            "cert-google-2": "Start the UX Design Process: Empathize, Define, and Ideate",
-            "cert-google-1": "Foundations of User Experience (UX) Design",
+            "cert-ux-coder-desc": "Introductory training in interface design, visual architecture, wireframes, prototyping and basic user experience criteria.",
+            "google-card-title": "Google UX Certificates",
+            "google-card-desc": "Training focused on UX foundations, empathizing, defining, ideating, wireframes, prototypes and user research.",
+            "google-cert-1": "Foundations of UX",
+            "google-cert-2": "Empathize, define and ideate",
+            "google-cert-3": "Wireframes and low-fi prototypes",
+            "google-cert-4": "UX research and testing",
+            "google-card-footer": "4 certificates included",
             "cert-graphic": "Graphic Design Course",
+            "cert-graphic-desc": "Complementary foundation in composition, visual communication, graphic hierarchy and design fundamentals.",
             "view-cert": "View Certificate ↗",
             "curiosity-title": "Curiosities",
             "curiosity-subtitle": "Some of my hobbies outside the design world.",
@@ -915,14 +1326,13 @@ body.light-mode .project-card:hover .project-img {
             "cur-travel-title": "Aspirations",
             "cur-travel-desc": "\"I love the moment of traveling, whether with friends, family or alone. One of my great dreams and goals is to visit as many countries as possible.\"",
             "contact-title": "Contact",
-            "contact-subtitle": "Contact me through any of my communication networks ✉️ .",
+            "contact-subtitle": "Available to collaborate on product, UX/UI design and digital systems projects.",
             "link-coder": "Certificado Coder Inicial EN.pdf",
             "link-edutin": "Certificado Edutin 2020 EN.pdf", 
-            "cert-graphic": "Graphic Design Course",
-            "link-google-4": "Coursera Curso 4 UX EN.pdf",
-            "link-google-3": "Coursera Curso 3 UX EN.pdf",
-            "link-google-2": "Coursera Curso 2 UX EN.pdf",
             "link-google-1": "Coursera Curso 1 UX EN.pdf",
+            "link-google-2": "Coursera Curso 2 UX EN.pdf",
+            "link-google-3": "Coursera Curso 3 UX EN.pdf",
+            "link-google-4": "Coursera Curso 4 UX EN.pdf",
             "project-travelmate-tag": "CODERHOUSE PROJECT UX/UI DESIGN • TRAVEL",
             "project-travelmate-title": "TravelMate",
             "project-travelmate-desc": "Mobile app for a company selling tickets, packages and tourist services around the world.",
@@ -930,26 +1340,20 @@ body.light-mode .project-card:hover .project-img {
     };
 
     langToggle.addEventListener('change', (e) => {
-        const lang = e.target.value;
-        document.querySelectorAll('[data-key]').forEach(element => {
-            const key = element.getAttribute('data-key');
-            if (translations[lang][key]) {
-                // Caso 1: Es el enlace del certificado
-                if (element.tagName === 'A' && key.startsWith('link-')) {
-                    element.setAttribute('href', translations[lang][key]);
-                } 
-                // Caso 2: Es el título del Hero (contiene un span para el apellido)
-                else if (key === 'hero-title') {
-                    const words = translations[lang][key].split(' ');
-                    element.innerHTML = `${words[0]} <span style="color: var(--accent-red)">${words[1]}</span>`;
-                } 
-                // Caso 3: Texto estándar
-                else {
-                    element.innerText = translations[lang][key];
-                }
+    const lang = e.target.value;
+
+    document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+
+        if (translations[lang][key]) {
+            if (element.tagName === 'A' && key.startsWith('link-')) {
+                element.setAttribute('href', translations[lang][key]);
+            } else {
+                element.innerText = translations[lang][key];
             }
-        });
+        }
     });
+});
 </script>
 </body>
 </html>
