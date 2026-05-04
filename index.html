@@ -361,17 +361,21 @@ body.light-mode .project-card:hover .project-img {
 
         /* --- Secciones Generales --- */
         section { padding: 3rem 8%; max-width: 1400px; margin: 0 auto; position: relative; }
-        .section-header { margin-bottom: 4rem; text-align: center; }
+        .section-header { 
+            margin-bottom: 4rem; text-align: center;
+            overflow: visible; 
+        }
         .section-header h2 { 
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(2.6rem, 5vw, 4.4rem); 
-            line-height: 1;
-            letter-spacing: -0.055em;
+            line-height: 1,08;
+            letter-spacing: -0.04em;
             margin-bottom: 1.5rem; 
             color: var(--text-light);
             text-shadow: none;
             position: relative;
             display: inline-block;
+            padding-inline: 0,05em;
             background: linear-gradient(135deg, var(--text-light), var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -919,9 +923,39 @@ body.light-mode .project-card:hover .project-img {
     font-weight: 900;
 }
 
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 520px));
+    gap: 2rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-grid .project-card {
+    width: 100%;
+}
+
+/* Si hay una cantidad impar de proyectos, el último se centra abajo */
+.projects-grid .project-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 520px;
+}
+
 @media (max-width: 900px) {
     .education-grid {
         grid-template-columns: 1fr;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+    }
+
+    .projects-grid .project-card:last-child:nth-child(odd) {
+        grid-column: auto;
+        justify-self: stretch;
+        max-width: none;
     }
 }
 
@@ -1012,7 +1046,15 @@ body.light-mode .project-card:hover .project-img {
         <h2 data-key="projects-title">Proyectos</h2>
         <p data-key="projects-subtitle">Algunas de las soluciones digitales que realicé.</p>
     </div>
-    <div class="grid">
+    <div class="grid projects-grid">
+        <div class="card project-card reveal" onclick="openCase('tranett')">
+            <img src="Home Tranett.jpg" alt="Tranett" class="project-img">
+            <div class="project-body">
+                <span data-key="project-tranett-tag">SAAS DE GESTIÓN • TURISMO</span>
+                <h3 data-key="project-tranett-title">Tranett</h3>
+                <p data-key="project-tranett-desc">Producto digital de una plataforma SaaS para centralizar reservas, pasajeros, paquetes, liquidaciones, gestión web y operación interna de agencias de turismo.</p>
+            </div>
+        </div>
         <div class="card project-card reveal" onclick="openCase('vitalis')">
             <img src="Home Vitalis.jpg" alt="Vitalis Salud" class="project-img">
             <div class="project-body">
@@ -1185,6 +1227,12 @@ body.light-mode .project-card:hover .project-img {
 
     // 2. Base de datos de proyectos para el modal
     const projectsData = {
+        'tranett': {
+            title: 'Tranett: Product Design Case Study',
+            subtitle: 'SaaS de gestión para agencias y operadores de turismo, diseñado para centralizar la operación diaria en una única plataforma modular.',
+            image: 'PresentacionTranett.jpg',
+            behanceUrl: 'https://www.behance.net/gallery/248654809/Tranett-SaaS-de-gestion-para-agencias-de-turismo'
+        },
         'vitalis': {
             title: 'Vitalis Salud: UX/UI Case Study',
             subtitle: 'Un proyecto donde la salud se encuentra con la eficiencia, diseñado para brindar productividad a los trabajadores.',
@@ -1252,6 +1300,11 @@ body.light-mode .project-card:hover .project-img {
             "project-vitalis-tag": "UX/UI DESIGN • SALUD",
             "project-vitalis-title": "Vitalis Salud",
             "project-vitalis-desc": "Sitio web para negocio de medicina laboral y Portal para pacientes y empresas cliente, profesionales y administradores.",
+            "project-tranett-title": "Tranett",
+            "project-tranett-desc": "SaaS de gestión para agencias y operadores de turismo, diseñado para centralizar la operación diaria en una única plataforma modular.",
+            "project-travelmate-tag": "PROYECTO CODERHOUSE UX/UI DESIGN • VIAJES",
+            "project-travelmate-title": "TravelMate",
+            "project-travelmate-desc": "App móvil diseñada para simplificar la planificación de viajes y la compra de servicios turísticos globales.",
             "project-next": "+ Próximo Proyecto",
             "project-next-desc": "Llegará un nuevo proyecto pronto...",
             "edu-title": "Formación",
@@ -1301,6 +1354,12 @@ body.light-mode .project-card:hover .project-img {
             "project-vitalis-tag": "UX/UI DESIGN • HEALTH",
             "project-vitalis-title": "Vitalis Salud",
             "project-vitalis-desc": "Website for occupational medicine business and Portal for patients and client companies, professionals and administrators.",
+            "project-tranett-title": "Tranett",
+            "project-tranett-tag": "PRODUCT DESIGN • TURISMO",
+            "project-tranett-desc": "Management SaaS for travel agencies and tour operators, designed to centralize daily operations in a single modular platform.",
+            "project-travelmate-tag": "CODERHOUSE PROJECT UX/UI DESIGN • TRAVEL",
+            "project-travelmate-title": "TravelMate",
+            "project-travelmate-desc": "Mobile app for a company selling tickets, packages and tourist services around the world.",
             "project-next": "+ Next Project",
             "project-next-desc": "A new project will be coming soon...",
             "edu-title": "Education",
@@ -1333,9 +1392,9 @@ body.light-mode .project-card:hover .project-img {
             "link-google-2": "Coursera Curso 2 UX EN.pdf",
             "link-google-3": "Coursera Curso 3 UX EN.pdf",
             "link-google-4": "Coursera Curso 4 UX EN.pdf",
-            "project-travelmate-tag": "CODERHOUSE PROJECT UX/UI DESIGN • TRAVEL",
-            "project-travelmate-title": "TravelMate",
-            "project-travelmate-desc": "Mobile app for a company selling tickets, packages and tourist services around the world.",
+           // "project-travelmate-tag": "CODERHOUSE PROJECT UX/UI DESIGN • TRAVEL",
+           // "project-travelmate-title": "TravelMate",
+           // "project-travelmate-desc": "Mobile app for a company selling tickets, packages and tourist services around the world.",
         }
     };
 
