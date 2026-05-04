@@ -342,6 +342,21 @@ body.light-mode .project-card:hover .project-img {
     transform: translateY(-2px);
 }
 
+.cv-button {
+    border-color: rgba(0, 212, 255, 0.32);
+    color: var(--text-light);
+}
+
+.cv-button::before {
+    content: "";
+    margin: 0;
+}
+
+.cv-button:hover {
+    border-color: rgba(0, 212, 255, 0.58);
+    background: rgba(0, 212, 255, 0.08);
+}
+
 .hero-tags {
     display: flex;
     flex-wrap: wrap;
@@ -532,7 +547,7 @@ body.light-mode .project-card:hover .project-img {
         .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-              @media (max-width: 900px) {
+@media (max-width: 900px) {
     .hero {
         padding-top: 7rem;
     }
@@ -649,14 +664,13 @@ body.light-mode .project-card:hover .project-img {
     .hero-actions {
         justify-content: center;
         gap: .75rem;
-        margin-bottom: 1.5rem;
     }
 
     .primary-button,
     .secondary-button {
         min-height: 46px;
         padding: 0 1rem;
-        font-size: .92rem;
+        font-size: .9rem;
     }
 
     .hero-tags {
@@ -1027,7 +1041,9 @@ body.light-mode .project-card:hover .project-img {
 
             <div class="hero-actions">
                 <a href="#proyectos" class="primary-button" data-key="hero-button">Ver proyectos</a>
-                <a href="mailto:valendemarco03@gmail.com" class="secondary-button">Contactar</a>
+                <a href="mailto:valendemarco03@gmail.com" class="secondary-button" data-key="hero-contact">Contactar</a>
+                <a href="Valentin-Demarco-CV.pdf" class="secondary-button cv-button" target="_blank" rel="noopener noreferrer" data-key="cv-button" id="cv-download">Descargar CV</a>
+
             </div>
 
             <div class="hero-tags">
@@ -1296,6 +1312,8 @@ body.light-mode .project-card:hover .project-img {
             "hero-title": "Diseño interfaces digitales para productos reales.",
             "hero-desc": "Trabajo en experiencias web, sistemas SaaS y plataformas operativas donde la interfaz debe ordenar procesos, reducir fricción y acompañar objetivos reales de negocio.",
             "hero-button": "Ver proyectos",
+            "hero-contact": "Contactar",
+            "cv-button": "Descargar CV",
             "projects-title": "Proyectos",
             "projects-subtitle": "Algunas de las soluciones digitales que realicé.",
             "project-vitalis-tag": "UX/UI DESIGN • SALUD",
@@ -1339,6 +1357,8 @@ body.light-mode .project-card:hover .project-img {
             "link-google-3": "Coursera Curso 3 UX.pdf",
             "link-google-2": "Coursera Curso 2 UX.pdf",
             "link-google-1": "Coursera Curso 1 UX.pdf",
+            "cv-button": "Descargar CV",
+            "cv-link": "Valentin-Demarco-CV.pdf",
         },
         en: {
             "nav-about": "About me",
@@ -1350,6 +1370,8 @@ body.light-mode .project-card:hover .project-img {
             "hero-title": "I design digital interfaces for real products.",
             "hero-desc": "I work on web experiences, SaaS systems and operational platforms where the interface must organize processes, reduce friction and support real business goals.",
             "hero-button": "View projects",
+            "hero-contact": "Contact me",
+            "cv-button": "Download CV",
             "projects-title": "Projects",
             "projects-subtitle": "Some of the digital solutions I have created.",
             "project-vitalis-tag": "UX/UI DESIGN • HEALTH",
@@ -1393,6 +1415,8 @@ body.light-mode .project-card:hover .project-img {
             "link-google-2": "Coursera Curso 2 UX EN.pdf",
             "link-google-3": "Coursera Curso 3 UX EN.pdf",
             "link-google-4": "Coursera Curso 4 UX EN.pdf",
+            "cv-button": "Download CV",
+            "cv-link": "Valentin-Demarco-CV-EN.pdf",
            // "project-travelmate-tag": "CODERHOUSE PROJECT UX/UI DESIGN • TRAVEL",
            // "project-travelmate-title": "TravelMate",
            // "project-travelmate-desc": "Mobile app for a company selling tickets, packages and tourist services around the world.",
@@ -1413,7 +1437,14 @@ body.light-mode .project-card:hover .project-img {
             }
         }
     });
+
+    const cvDownload = document.getElementById('cv-download');
+
+    if (cvDownload && translations[lang]["cv-link"]) {
+        cvDownload.setAttribute('href', translations[lang]["cv-link"]);
+    }
 });
+
 </script>
 </body>
 </html>
