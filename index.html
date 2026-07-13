@@ -992,6 +992,10 @@ body.light-mode .project-card:hover .project-img {
     }
 }
 
+.grid-column-full {
+    grid-column: 1 / -1;
+}
+
 .muted-detail {
     color: var(--text-dim);
 }
@@ -1064,6 +1068,14 @@ body.light-mode .project-card:hover .project-img {
         <p data-key="projects-subtitle">Algunas de las soluciones digitales que realicé.</p>
     </div>
     <div class="grid projects-grid">
+                <div class="card project-card reveal" onclick="openCase('pictos')">
+            <img src="Home Pictos.jpg" alt="Pictos Healthcare" class="project-img">
+            <div class="project-body">
+                <span data-key="project-pictos-tag">APP DESIGN • HEALTHCARE & DESIGN SYSTEM</span>
+                <h3 data-key="project-pictos-title">Pictos</h3>
+                <p data-key="project-pictos-desc">Aplicación móvil de salud orientada al diseño de producto y desarrollo de sistema de diseño (Design System) robusto y accesible.</p>
+            </div>
+        </div>
         <div class="card project-card reveal" onclick="openCase('tranett')">
             <img src="Home Tranett.jpg" alt="Tranett" class="project-img">
             <div class="project-body">
@@ -1246,7 +1258,7 @@ body.light-mode .project-card:hover .project-img {
     const projectsData = {
         'tranett': {
             title: 'Tranett: Product Design Case Study',
-            subtitle: 'SaaS de gestión para agencias y operadores de turismo, diseñado para centralizar la operación diaria en una única plataforma modular.',
+            subtitle: 'SaaS de gestión para agencias y operadores de turismo, diseñado para centralizar la operation diaria en una única plataforma modular.',
             image: 'PresentacionTranett.jpg',
             behanceUrl: 'https://www.behance.net/gallery/248654809/Tranett-SaaS-de-gestion-para-agencias-de-turismo'
         },
@@ -1261,6 +1273,12 @@ body.light-mode .project-card:hover .project-img {
             subtitle: 'App móvil diseñada para simplificar la planificación de viajes y la compra de servicios turísticos globales.',
             image: 'PresentacionTravelMate.jpg',
             behanceUrl: 'https://www.behance.net/valentndemarco'
+        },
+        'pictos': {
+            title: 'Pictos: Healthcare App & Design System',
+            subtitle: 'Estudio de caso enfocado en la creación de un ecosistema móvil de salud estructurado mediante un sistema de diseño consistente y escalable.',
+            image: 'PresentacionPictos.jpg',
+            behanceUrl: 'https://www.behance.net/gallery/252613899/Pictos-Healthcare-App-Design-System-UX-UI-Design'
         }
     };
 
@@ -1324,6 +1342,9 @@ body.light-mode .project-card:hover .project-img {
             "project-travelmate-tag": "PROYECTO CODERHOUSE UX/UI DESIGN • VIAJES",
             "project-travelmate-title": "TravelMate",
             "project-travelmate-desc": "App móvil diseñada para simplificar la planificación de viajes y la compra de servicios turísticos globales.",
+            "project-pictos-tag": "APP DESIGN • HEALTHCARE & DESIGN SYSTEM",
+            "project-pictos-title": "Pictos",
+            "project-pictos-desc": "Aplicación móvil de salud orientada al diseño de producto y desarrollo de sistema de diseño (Design System) robusto y accesible.",
             "project-next": "+ Próximo Proyecto",
             "project-next-desc": "Llegará un nuevo proyecto pronto...",
             "edu-title": "Formación",
@@ -1352,12 +1373,10 @@ body.light-mode .project-card:hover .project-img {
             "contact-subtitle": "Disponible para colaborar en proyectos de producto, diseño UX/UI y sistemas digitales.",            
             "link-coder": "Certificado Coder Inicial.pdf",
             "link-edutin": "Certificado Edutin 2020.pdf",
-            "cert-graphic": "Curso de Diseño Gráfico",
             "link-google-4": "Coursera Curso 4 UX.pdf",
             "link-google-3": "Coursera Curso 3 UX.pdf",
             "link-google-2": "Coursera Curso 2 UX.pdf",
             "link-google-1": "Coursera Curso 1 UX.pdf",
-            "cv-button": "Descargar CV",
             "cv-link": "Valentin-Demarco-CV.pdf",
         },
         en: {
@@ -1383,6 +1402,9 @@ body.light-mode .project-card:hover .project-img {
             "project-travelmate-tag": "CODERHOUSE PROJECT UX/UI DESIGN • TRAVEL",
             "project-travelmate-title": "TravelMate",
             "project-travelmate-desc": "Mobile app for a company selling tickets, packages and tourist services around the world.",
+            "project-pictos-tag": "APP DESIGN • HEALTHCARE & DESIGN SYSTEM",
+            "project-pictos-title": "Pictos",
+            "project-pictos-desc": "Mobile healthcare application focused on product design and building a robust, accessible design system.",
             "project-next": "+ Next Project",
             "project-next-desc": "A new project will be coming soon...",
             "edu-title": "Education",
@@ -1415,11 +1437,7 @@ body.light-mode .project-card:hover .project-img {
             "link-google-2": "Coursera Curso 2 UX EN.pdf",
             "link-google-3": "Coursera Curso 3 UX EN.pdf",
             "link-google-4": "Coursera Curso 4 UX EN.pdf",
-            "cv-button": "Download CV",
             "cv-link": "Valentin-Demarco-CV-EN.pdf",
-           // "project-travelmate-tag": "CODERHOUSE PROJECT UX/UI DESIGN • TRAVEL",
-           // "project-travelmate-title": "TravelMate",
-           // "project-travelmate-desc": "Mobile app for a company selling tickets, packages and tourist services around the world.",
         }
     };
 
