@@ -472,7 +472,7 @@ body.light-mode .project-card:hover .project-img {
         .project-body { padding: 2rem; }
 
         /* --- Formación (tarjetas simplificadas) --- */
-        .education-card .detail-text { margin-top: 1rem; color: var(--accent-red); font-weight: 600; }
+        .education-card .detail-text { margin-top: 1rem; color: var(--accent-purple); font-weight: 600; }
 
         /* --- Contacto --- */
         #contacto { text-align: center; }
@@ -759,7 +759,8 @@ body.light-mode .project-card:hover .project-img {
             cursor: pointer;
         }
 
-        .curiosidad-card:hover {
+        .curiosidad-card:hover,
+        .curiosidad-card.flipped {
             transform: rotateY(180deg);
         }
 
@@ -799,8 +800,14 @@ body.light-mode .project-card:hover .project-img {
 
         /* Estilos para la cabecera de la tarjeta */
 .education-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.education-subgrid {
     display: grid;
-    grid-template-columns: 1fr 1.4fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     align-items: stretch;
 }
@@ -823,6 +830,18 @@ body.light-mode .project-card:hover .project-img {
     border-color: var(--accent-purple);
     box-shadow: 0 0 25px rgba(0, 212, 255, 0.16);
     transform: translateY(-6px);
+}
+
+.education-card.featured-edu {
+    width: 100%;
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.1), rgba(0, 212, 255, 0.04));
+    box-shadow: 0 12px 40px rgba(0, 212, 255, 0.12);
+}
+
+.education-card.featured-edu:hover {
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.28);
 }
 
 .education-label {
@@ -962,6 +981,9 @@ body.light-mode .project-card:hover .project-img {
     .education-grid {
         grid-template-columns: 1fr;
     }
+    .education-subgrid {
+        grid-template-columns: 1fr;
+    }
     .projects-grid {
         grid-template-columns: 1fr;
         max-width: 560px;
@@ -1068,7 +1090,7 @@ body.light-mode .project-card:hover .project-img {
         <p data-key="projects-subtitle">Algunas de las soluciones digitales que realicé.</p>
     </div>
     <div class="grid projects-grid">
-                <div class="card project-card reveal" onclick="openCase('pictos')">
+        <div class="card project-card reveal" onclick="openCase('pictos')">
             <img src="Home Pictos.jpg" alt="Pictos Healthcare" class="project-img">
             <div class="project-body">
                 <span data-key="project-pictos-tag">APP DESIGN • HEALTHCARE & DESIGN SYSTEM</span>
@@ -1112,72 +1134,96 @@ body.light-mode .project-card:hover .project-img {
 
     <div class="education-grid">
 
-       <a href="Certificado Coder Inicial.pdf" target="_blank" rel="noopener noreferrer" class="card education-card reveal" data-key="link-coder">
-    <div class="cert-header">
-        <span class="education-label">Coderhouse · 2024</span>
-        <h3 data-key="cert-ux-coder">Diseño UX/UI Inicial</h3>
-        <p data-key="cert-ux-coder-desc">Formación inicial en diseño de interfaces, arquitectura visual, wireframes, prototipado y criterios básicos de experiencia de usuario.</p>
-    </div>
+        <!-- DIPLOMATURA UTN (DESTACADO PRINCIPAL - ANCHO COMPLETO) -->
+        <a href="Diplomatura-UXUI-UTN.pdf" target="_blank" rel="noopener noreferrer" class="card education-card featured-edu reveal" data-key="link-utn">
+            <div class="cert-header">
+                <span class="education-label" data-key="utn-label">Universidad Tecnológica Nacional (UTN.BA) · 2026</span>
+                <h3 data-key="cert-ux-utn">Diplomatura de Diseño UX / UI</h3>
+                <p data-key="cert-ux-utn-desc">Especialización universitaria intensiva de 315 horas lectivas enfocada en metodologías avanzadas de experiencia de usuario, arquitectura de información, prototipado interactivo e investigación de producto digital.</p>
+            </div>
 
-    <div class="cert-footer">
-        <span class="detail-text" data-key="view-cert">Ver certificado ↗</span>
-        <div class="cert-logo-wrapper">
-            <img src="coder.png" alt="Logo Coderhouse" class="cert-logo">
+            <div class="cert-footer">
+                <span class="detail-text" data-key="view-cert">Ver diploma ↗</span>
+                <div class="cert-logo-wrapper">
+                    <img src="utn.png" alt="Logo UTN" class="cert-logo">
+                </div>
+            </div>
+        </a>
+
+        <!-- SUBGRILLA DE 3 COLUMNAS PARA LAS OTRAS DIPLOMAS -->
+        <div class="education-subgrid">
+
+            <!-- CODERHOUSE -->
+            <a href="Certificado Coder Inicial.pdf" target="_blank" rel="noopener noreferrer" class="card education-card reveal" data-key="link-coder">
+                <div class="cert-header">
+                    <span class="education-label">Coderhouse · 2024</span>
+                    <h3 data-key="cert-ux-coder">Diseño UX/UI Inicial</h3>
+                    <p data-key="cert-ux-coder-desc">Formación inicial en diseño de interfaces, arquitectura visual, wireframes, prototipado y criterios básicos de experiencia de usuario.</p>
+                </div>
+
+                <div class="cert-footer">
+                    <span class="detail-text" data-key="view-cert">Ver certificado ↗</span>
+                    <div class="cert-logo-wrapper">
+                        <img src="coder.png" alt="Logo Coderhouse" class="cert-logo">
+                    </div>
+                </div>
+            </a>
+
+            <!-- GOOGLE -->
+            <div class="card education-card google-education-card reveal">
+                <div class="cert-header">
+                    <span class="education-label">Google by Coursera · 2023—2024</span>
+                    <h3 data-key="google-card-title">Certificados UX de Google</h3>
+                    <p data-key="google-card-desc">Formación enfocada en fundamentos UX, empatizar, definir, idear, wireframes, prototipos e investigación con usuarios.</p>
+                </div>
+
+                <div class="google-cert-list">
+                    <a href="Coursera Curso 1 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-1">
+                        <span>01</span>
+                        <strong data-key="google-cert-1">Fundamentos de UX</strong>
+                    </a>
+
+                    <a href="Coursera Curso 2 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-2">
+                        <span>02</span>
+                        <strong data-key="google-cert-2">Empatizar, definir e idear</strong>
+                    </a>
+
+                    <a href="Coursera Curso 3 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-3">
+                        <span>03</span>
+                        <strong data-key="google-cert-3">Wireframes y prototipos low-fi</strong>
+                    </a>
+
+                    <a href="Coursera Curso 4 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-4">
+                        <span>04</span>
+                        <strong data-key="google-cert-4">Investigación UX y pruebas</strong>
+                    </a>
+                </div>
+
+                <div class="cert-footer">
+                    <span class="detail-text muted-detail" data-key="google-card-footer">4 certificados incluidos</span>
+                    <div class="cert-logo-wrapper">
+                        <img src="google.png" alt="Logo Google" class="cert-logo">
+                    </div>
+                </div>
+            </div>
+
+            <!-- EDUTIN -->
+            <a href="Certificado Edutin 2020.pdf" target="_blank" rel="noopener noreferrer" class="card education-card reveal" data-key="link-edutin">
+                <div class="cert-header">
+                    <span class="education-label">Edutin Academy · 2020</span>
+                    <h3 data-key="cert-graphic">Curso de Diseño Gráfico</h3>
+                    <p data-key="cert-graphic-desc">Base complementaria en composición, comunicación visual, jerarquía gráfica y fundamentos de diseño.</p>
+                </div>
+
+                <div class="cert-footer">
+                    <span class="detail-text" data-key="view-cert">Ver certificado ↗</span>
+                    <div class="cert-logo-wrapper">
+                        <img src="edutin.png" alt="Logo Edutin" class="cert-logo">
+                    </div>
+                </div>
+            </a>
+
         </div>
-    </div>
-</a>
-
-        <div class="card education-card google-education-card reveal">
-    <div class="cert-header">
-        <span class="education-label">Google by Coursera · 2023—2024</span>
-        <h3 data-key="google-card-title">Certificados UX de Google</h3>
-        <p data-key="google-card-desc">Formación enfocada en fundamentos UX, empatizar, definir, idear, wireframes, prototipos e investigación con usuarios.</p>
-    </div>
-
-    <div class="google-cert-list">
-        <a href="Coursera Curso 1 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-1">
-            <span>01</span>
-            <strong data-key="google-cert-1">Fundamentos de UX</strong>
-        </a>
-
-        <a href="Coursera Curso 2 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-2">
-            <span>02</span>
-            <strong data-key="google-cert-2">Empatizar, definir e idear</strong>
-        </a>
-
-        <a href="Coursera Curso 3 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-3">
-            <span>03</span>
-            <strong data-key="google-cert-3">Wireframes y prototipos low-fi</strong>
-        </a>
-
-        <a href="Coursera Curso 4 UX.pdf" target="_blank" rel="noopener noreferrer" data-key="link-google-4">
-            <span>04</span>
-            <strong data-key="google-cert-4">Investigación UX y pruebas</strong>
-        </a>
-    </div>
-
-    <div class="cert-footer">
-        <span class="detail-text muted-detail" data-key="google-card-footer">4 certificados incluidos</span>
-        <div class="cert-logo-wrapper">
-            <img src="google.png" alt="Logo Google" class="cert-logo">
-        </div>
-    </div>
-</div>
-
-        <a href="Certificado Edutin 2020.pdf" target="_blank" rel="noopener noreferrer" class="card education-card reveal" data-key="link-edutin">
-    <div class="cert-header">
-        <span class="education-label">Edutin Academy · 2020</span>
-        <h3 data-key="cert-graphic">Curso de Diseño Gráfico</h3>
-        <p data-key="cert-graphic-desc">Base complementaria en composición, comunicación visual, jerarquía gráfica y fundamentos de diseño.</p>
-    </div>
-
-    <div class="cert-footer">
-        <span class="detail-text" data-key="view-cert">Ver certificado ↗</span>
-        <div class="cert-logo-wrapper">
-            <img src="edutin.png" alt="Logo Edutin" class="cert-logo">
-        </div>
-    </div>
-</a>
 
     </div>
 </section>
@@ -1349,6 +1395,9 @@ body.light-mode .project-card:hover .project-img {
             "project-next-desc": "Llegará un nuevo proyecto pronto...",
             "edu-title": "Formación",
             "edu-subtitle": "Aprendizaje continuo en UX/UI, investigación, prototipado y diseño visual.",
+            "utn-label": "Universidad Tecnológica Nacional (UTN.BA) · 2026",
+            "cert-ux-utn": "Diplomatura de Diseño UX / UI",
+            "cert-ux-utn-desc": "Especialización universitaria intensiva de 315 horas lectivas enfocada en metodologías avanzadas de experiencia de usuario, arquitectura de información, prototipado interactivo e investigación de producto digital.",
             "cert-ux-coder": "Diseño UX/UI Inicial",
             "cert-ux-coder-desc": "Formación inicial en diseño de interfaces, arquitectura visual, wireframes, prototipado y criterios básicos de experiencia de usuario.",
             "google-card-title": "Certificados UX de Google",
@@ -1371,6 +1420,7 @@ body.light-mode .project-card:hover .project-img {
             "cur-travel-desc": "\"Me encanta el momento de viajar, ya sea con amigos, familia o solo. Uno de mis grandes sueños y objetivos es visitar la gran mayoría de países posibles\".",
             "contact-title": "Contacto",
             "contact-subtitle": "Disponible para colaborar en proyectos de producto, diseño UX/UI y sistemas digitales.",            
+            "link-utn": "Diplomatura-UXUI-UTN.pdf",
             "link-coder": "Certificado Coder Inicial.pdf",
             "link-edutin": "Certificado Edutin 2020.pdf",
             "link-google-4": "Coursera Curso 4 UX.pdf",
@@ -1409,6 +1459,9 @@ body.light-mode .project-card:hover .project-img {
             "project-next-desc": "A new project will be coming soon...",
             "edu-title": "Education",
             "edu-subtitle": "Continuous learning in UX/UI, research, prototyping and visual design.",
+            "utn-label": "National Technological University (UTN.BA) · 2026",
+            "cert-ux-utn": "UX / UI Design Diploma",
+            "cert-ux-utn-desc": "Intensive university specialization (315 coursework hours) focused on advanced UX methodologies, information architecture, interactive prototyping, and digital product research.",
             "cert-ux-coder": "Initial UX/UI Design",
             "cert-ux-coder-desc": "Introductory training in interface design, visual architecture, wireframes, prototyping and basic user experience criteria.",
             "google-card-title": "Google UX Certificates",
@@ -1431,6 +1484,7 @@ body.light-mode .project-card:hover .project-img {
             "cur-travel-desc": "\"I love the moment of traveling, whether with friends, family or alone. One of my great dreams and goals is to visit as many countries as possible.\"",
             "contact-title": "Contact",
             "contact-subtitle": "Available to collaborate on product, UX/UI design and digital systems projects.",
+            "link-utn": "Diplomatura-UXUI-UTN-EN.pdf",
             "link-coder": "Certificado Coder Inicial EN.pdf",
             "link-edutin": "Certificado Edutin 2020 EN.pdf", 
             "link-google-1": "Coursera Curso 1 UX EN.pdf",
@@ -1461,6 +1515,12 @@ body.light-mode .project-card:hover .project-img {
     if (cvDownload && translations[lang]["cv-link"]) {
         cvDownload.setAttribute('href', translations[lang]["cv-link"]);
     }
+
+    document.querySelectorAll('.curiosidad-card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
+    });
 });
 
 </script>
